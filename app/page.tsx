@@ -1,5 +1,10 @@
-import Image from "next/image";
+import Uploader from "@/app/ui/picture/uploader";
 
 export default function Home() {
-  return <main>Picture to Pick</main>;
+  return (
+    <main>
+      Picture to Pick
+      <Uploader />
+    </main>
+  );
 }
