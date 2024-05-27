@@ -1,17 +1,18 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
-import PreviewImage from "./PreviewImage";
+import PreviewImage from "@/app/ui/picture/previewImage";
+import { Picture } from "@/app/types/picture";
 
 export default function Uploader() {
-  const [picture, setPicture] = useState();
+  const [picture, setPicture] = useState<Picture | null>();
 
-  const handleChangePicture = useCallback((file) => {
-    setPicture({ file, preview: URL.createObjectURL(file) });
+  const handleChangePicture = useCallback((file: File) => {
+    setPicture({ ...file, preview: URL.createObjectURL(file) });
   }, []);
 
   useEffect(() => {
     return () => {
-      URL.revokeObjectURL(picture);
+      picture?.preview && URL.revokeObjectURL(picture.preview);
     };
   }, [picture]);
 
@@ -23,7 +24,9 @@ export default function Uploader() {
         type="file"
         accept="image/*"
         className=""
-        onChange={(e) => handleChangePicture(e.target.files[0])}
+        onChange={(e) =>
+          e.target?.files && handleChangePicture(e.target.files[0])
+        }
       ></input>
     </>
   );

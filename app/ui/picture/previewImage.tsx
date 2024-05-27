@@ -1,6 +1,11 @@
 import Image from "next/image";
+import { Picture } from "@/app/types/picture";
 
-export default function PreviewImage({ picture }) {
+interface PreviewImageProps {
+  picture: Picture;
+}
+
+export default function PreviewImage({ picture }: PreviewImageProps) {
   return (
     <div>
       <Image
