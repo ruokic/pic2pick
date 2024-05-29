@@ -31,11 +31,6 @@ export const Button = ({
       {...props}
     >
       {label}
-      <style tsx>{`
-        button {
-          background-color: ${backgroundColor};
-        }
-      `}</style>
     </button>
   );
 };
