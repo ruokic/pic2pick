@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
-import PreviewImage from "@/app/ui/picture/previewImage";
+import PreviewImage from "@/app/ui/picture/PreviewImage";
 import { Picture } from "@/app/types/picture";
 
 export default function Uploader() {
