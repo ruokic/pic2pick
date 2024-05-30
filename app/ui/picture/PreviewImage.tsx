@@ -8,13 +8,15 @@ interface PreviewImageProps {
 export default function PreviewImage({ picture }: PreviewImageProps) {
   return (
     <div>
-      <Image
-        src={picture.preview}
-        width="500"
-        height="300"
-        quality={100}
-        alt="uploaded picture"
-      />
+      {picture ? (
+        <Image
+          src={picture.preview}
+          width="500"
+          height="300"
+          quality={100}
+          alt="uploaded picture"
+        />
+      ) : null}
     </div>
   );
 }
