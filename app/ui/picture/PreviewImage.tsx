@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Picture } from "@/app/types/picture";
+import { Picture } from "@/app/lib/types/picture";
 
 interface PreviewImageProps {
   picture: Picture;

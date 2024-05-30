@@ -1,11 +1,10 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import PreviewImage from "@/app/ui/picture/PreviewImage";
-import { Picture } from "@/app/types/picture";
 import PictureList from "@/app/ui/picture/List";
 import PictureInfo from "@/app/ui/picture/Info";
 import Uploader from "@/app/ui/picture/Uploader";
-import { usePictureStore } from "@/app/store/usePictureStore";
+import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function Home() {
   const { pictures, selectedIndex } = usePictureStore();

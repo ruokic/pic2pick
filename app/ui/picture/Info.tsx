@@ -1,4 +1,4 @@
-import { Picture } from "@/app/types/picture";
+import { Picture } from "@/app/lib/types/picture";
 
 interface InfoProps {
   picture: Picture;
@@ -12,7 +12,7 @@ export default function Info({ picture }: InfoProps) {
         <div>
           <div>이름 : {picture.name}</div>
           <div>
-            마지막 수정일자 : {new Date(picture.lastModified).toLocaleString()}
+            수정일자 : {new Date(picture.lastModified).toLocaleString()}
           </div>
           <div>사진 크기 : {picture.size}</div>
           <div>사진 타입 : {picture.type}</div>

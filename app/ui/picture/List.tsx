@@ -1,6 +1,6 @@
-import { Picture } from "@/app/types/picture";
 import Uploader from "@/app/ui/picture/Uploader";
-import { usePictureStore } from "@/app/store/usePictureStore";
+import { Picture } from "@/app/lib/types/picture";
+import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function List() {
   const { pictures, changeSelectedIndex } = usePictureStore();
