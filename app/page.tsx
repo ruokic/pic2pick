@@ -22,21 +22,37 @@ export default function Home() {
     return () => {
       pictures.map((picture) => URL.revokeObjectURL(picture.preview));
     };
-  }, [pictures]);
+  }, []);
 
   return (
-    <main className="flex">
+    <main className="flex divide-x h-[calc(100vh-66px)]">
       {/* Picture List */}
-      <div>
-        {pictures.map((picture) => (
-          <div key={picture.preview}>{picture.name}</div>
-        ))}
-        <Uploader pictures={pictures} addPictures={addPictures} />
+      <div className="p-4 flex flex-col gap-2">
+        <div className="flex justify-between">
+          파일 목록
+          <Uploader pictures={pictures} addPictures={addPictures} />
+        </div>
+        <div className="flex flex-col gap-2 m-2">
+          {pictures.map((picture, index) => (
+            <button
+              key={picture.preview}
+              onClick={() => setSelectedIndex(index)}
+            >
+              {picture.name}
+            </button>
+          ))}
+        </div>
       </div>
       {/* MetaData of Selected Picture */}
-      <div></div>
+      <div>
+        {pictures.length > 0 && <div>{pictures[selectedIndex].name}</div>}
+      </div>
       {/* Preview of Selected Picture */}
-      <div></div>
+      <div>
+        {pictures.length > 0 && (
+          <PreviewImage picture={pictures[selectedIndex]} />
+        )}
+      </div>
     </main>
   );
 }

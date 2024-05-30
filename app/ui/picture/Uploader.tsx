@@ -7,13 +7,16 @@ interface UploaderProps {
 
 export default function Uploader({ pictures, addPictures }: UploaderProps) {
   return (
-    <input
-      id="file"
-      type="file"
-      accept="image/*"
-      multiple
-      className=""
-      onChange={(e) => e.target?.files && addPictures(e.target.files)}
-    ></input>
+    <label>
+      +
+      <input
+        id="file"
+        type="file"
+        accept="image/*"
+        multiple
+        className="hidden"
+        onChange={(e) => e.target?.files && addPictures(e.target.files)}
+      />
+    </label>
   );
 }
