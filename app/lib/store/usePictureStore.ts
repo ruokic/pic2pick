@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Picture } from "@/app/types/picture";
+import { Picture } from "@/app/lib/types/picture";
 
 interface PictureStore {
   pictures: Picture[];
