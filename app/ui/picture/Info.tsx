@@ -1,6 +1,10 @@
 import { Picture } from "@/app/types/picture";
 
-export default function Info({ picture }) {
+interface InfoProps {
+  picture: Picture;
+}
+
+export default function Info({ picture }: InfoProps) {
   return (
     <div className="p-4 flex flex-col gap-2">
       <div>사진 정보</div>

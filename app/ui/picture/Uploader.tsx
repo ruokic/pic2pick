@@ -1,11 +1,16 @@
-import { Picture } from "@/app/types/picture";
+import { usePictureStore } from "@/app/store/usePictureStore";
 
-interface UploaderProps {
-  pictures: Picture[];
-  addPictures: (pictures: FileList) => void;
-}
+export default function Uploader() {
+  const { addPictures } = usePictureStore();
 
-export default function Uploader({ pictures, addPictures }: UploaderProps) {
+  const handleAddPictures = (files: FileList) => {
+    const newFiles = Array.from(files).map((file) =>
+      Object.assign(file, { preview: URL.createObjectURL(file) })
+    );
+
+    addPictures(newFiles);
+  };
+
   return (
     <label>
       +
@@ -15,7 +20,7 @@ export default function Uploader({ pictures, addPictures }: UploaderProps) {
         accept="image/*"
         multiple
         className="hidden"
-        onChange={(e) => e.target?.files && addPictures(e.target.files)}
+        onChange={(e) => e.target?.files && handleAddPictures(e.target.files)}
       />
     </label>
   );
