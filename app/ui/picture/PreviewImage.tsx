@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import { usePictures } from "@/app/lib/hooks/usePictures";
 
@@ -7,7 +6,7 @@ export default function PreviewImage() {
   const picture = pictures[selectedIndex];
 
   return (
-    <div>
+    <div className="flex-grow">
       {picture ? (
         <Image
           src={picture.preview}

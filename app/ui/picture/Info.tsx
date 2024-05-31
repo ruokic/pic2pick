@@ -1,4 +1,3 @@
-"use client";
 import { setDateString, setByteString } from "@/app/lib/utils/string";
 import { downloadFile } from "@/app/lib/utils/file";
 import { Button } from "@/app/ui/common/Button";
@@ -9,7 +8,7 @@ export default function Info() {
   const picture = pictures[selectedIndex];
 
   return (
-    <div className="p-4 flex flex-col gap-2">
+    <div className="p-4 flex flex-col gap-2 flex-grow">
       <div>사진 정보</div>
       {picture ? (
         <div className="flex flex-col w-full gap-2">
