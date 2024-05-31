@@ -1,17 +1,18 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import PreviewImage from "@/app/ui/picture/PreviewImage";
 import PictureList from "@/app/ui/picture/List";
 import PictureInfo from "@/app/ui/picture/Info";
 import Uploader from "@/app/ui/picture/Uploader";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
+import { removePreview } from "@/app/lib/utils/array";
 
 export default function Home() {
   const { pictures, selectedIndex } = usePictureStore();
 
   useEffect(() => {
     return () => {
-      pictures.map((picture) => URL.revokeObjectURL(picture.preview));
+      removePreview(pictures);
     };
   }, []);
 

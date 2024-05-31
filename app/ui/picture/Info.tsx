@@ -1,4 +1,5 @@
 import { Picture } from "@/app/lib/types/picture";
+import { setDateString, setByteString } from "@/app/lib/utils/string";
 
 interface InfoProps {
   picture: Picture;
@@ -11,10 +12,8 @@ export default function Info({ picture }: InfoProps) {
       {picture ? (
         <div>
           <div>이름 : {picture.name}</div>
-          <div>
-            수정일자 : {new Date(picture.lastModified).toLocaleString()}
-          </div>
-          <div>사진 크기 : {picture.size}</div>
+          <div>수정일자 : {setDateString(picture.lastModified)}</div>
+          <div>사진 크기 : {setByteString(picture.size)}</div>
           <div>사진 타입 : {picture.type}</div>
         </div>
       ) : null}

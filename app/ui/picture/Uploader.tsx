@@ -1,13 +1,11 @@
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
+import { setPreview } from "@/app/lib/utils/array";
 
 export default function Uploader() {
   const { addPictures } = usePictureStore();
 
   const handleAddPictures = (files: FileList) => {
-    const newFiles = Array.from(files).map((file) =>
-      Object.assign(file, { preview: URL.createObjectURL(file) })
-    );
-
+    const newFiles = setPreview(files);
     addPictures(newFiles);
   };
 
