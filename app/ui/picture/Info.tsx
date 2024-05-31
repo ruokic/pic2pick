@@ -1,5 +1,7 @@
 import { Picture } from "@/app/lib/types/picture";
 import { setDateString, setByteString } from "@/app/lib/utils/string";
+import { downloadFile } from "@/app/lib/utils/file";
+import { Button } from "@/app/ui/common/Button";
 
 interface InfoProps {
   picture: Picture;
@@ -10,11 +12,17 @@ export default function Info({ picture }: InfoProps) {
     <div className="p-4 flex flex-col gap-2">
       <div>사진 정보</div>
       {picture ? (
-        <div>
+        <div className="flex flex-col w-full gap-2">
           <div>이름 : {picture.name}</div>
           <div>수정일자 : {setDateString(picture.lastModified)}</div>
           <div>사진 크기 : {setByteString(picture.size)}</div>
           <div>사진 타입 : {picture.type}</div>
+          <Button
+            primary
+            label="다운로드"
+            size="small"
+            onClick={() => downloadFile(picture)}
+          />
         </div>
       ) : null}
     </div>

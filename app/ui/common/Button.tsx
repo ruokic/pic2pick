@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 const sizeMap = {
-  small: "text-xs py-2.5 px-4",
+  small: "text-xs py-2 px-4",
   medium: "text-sm py-2.5 px-5",
   large: "text-base py-3 px-6",
 };
