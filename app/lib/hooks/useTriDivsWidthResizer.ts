@@ -1,20 +1,21 @@
 import { useRef } from "react";
 
 export function useTriDivsWidthResizer() {
-  const containerRef = useRef();
-  const currentResizer = useRef();
+  const containerRef = useRef<HTMLElement | null>(null);
+  const currentResizer = useRef<HTMLElement | null>(null);
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!(e.target instanceof HTMLElement)) return;
     currentResizer.current = e.target;
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp, { once: true });
   };
 
-  const handleMouseMove = (e) => {
-    if (!currentResizer.current) return;
+  const handleMouseMove = (e: MouseEvent) => {
+    if (!containerRef.current || !currentResizer.current) return;
     const [div1, resizer1, div2, resizer2, div3] = Array.from(
       containerRef.current.childNodes
-    );
+    ) as HTMLElement[];
 
     const containerRect = containerRef.current.getBoundingClientRect();
     const div1Rect = div1.getBoundingClientRect();

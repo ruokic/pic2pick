@@ -6,6 +6,6 @@ export function setPreview(files: FileList) {
   );
 }
 
-export function removePreview(files: Picture) {
+export function removePreview(files: Picture[]) {
   files.map((picture) => URL.revokeObjectURL(picture.preview));
 }
