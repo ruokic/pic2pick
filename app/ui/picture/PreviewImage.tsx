@@ -1,11 +1,11 @@
+"use client";
 import Image from "next/image";
-import { Picture } from "@/app/lib/types/picture";
+import { usePictures } from "@/app/lib/hooks/usePictures";
 
-interface PreviewImageProps {
-  picture: Picture;
-}
+export default function PreviewImage() {
+  const { pictures, selectedIndex } = usePictures();
+  const picture = pictures[selectedIndex];
 
-export default function PreviewImage({ picture }: PreviewImageProps) {
   return (
     <div>
       {picture ? (

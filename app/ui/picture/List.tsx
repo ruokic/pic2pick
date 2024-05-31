@@ -1,9 +1,10 @@
+"use client";
 import Uploader from "@/app/ui/picture/Uploader";
 import { Picture } from "@/app/lib/types/picture";
-import { usePictureStore } from "@/app/lib/store/usePictureStore";
+import { usePictures } from "@/app/lib/hooks/usePictures";
 
 export default function List() {
-  const { pictures, changeSelectedIndex } = usePictureStore();
+  const { pictures, changeSelectedIndex } = usePictures();
 
   return (
     <div className="p-4 flex flex-col gap-2">

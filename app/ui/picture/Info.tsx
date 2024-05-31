@@ -1,13 +1,13 @@
-import { Picture } from "@/app/lib/types/picture";
+"use client";
 import { setDateString, setByteString } from "@/app/lib/utils/string";
 import { downloadFile } from "@/app/lib/utils/file";
 import { Button } from "@/app/ui/common/Button";
+import { usePictures } from "@/app/lib/hooks/usePictures";
 
-interface InfoProps {
-  picture: Picture;
-}
+export default function Info() {
+  const { pictures, selectedIndex } = usePictures();
+  const picture = pictures[selectedIndex];
 
-export default function Info({ picture }: InfoProps) {
   return (
     <div className="p-4 flex flex-col gap-2">
       <div>사진 정보</div>
