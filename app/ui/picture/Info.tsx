@@ -10,7 +10,7 @@ export default function Info() {
 
   return (
     <Container style="min-w-80">
-      <div>사진 정보</div>
+      <div className="text-lg font-bold">사진 정보</div>
       {picture ? (
         <div className="flex flex-col w-full gap-2">
           <div>이름 : {picture.name}</div>
@@ -20,7 +20,6 @@ export default function Info() {
           <Button
             primary
             label="다운로드"
-            size="small"
             onClick={() => downloadFile(picture)}
           />
         </div>

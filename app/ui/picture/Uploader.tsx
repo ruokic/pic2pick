@@ -4,13 +4,8 @@ import { setPreview } from "@/app/lib/utils/array";
 export default function Uploader() {
   const { addPictures } = usePictureStore();
 
-  const handleAddPictures = (files: FileList) => {
-    const newFiles = setPreview(files);
-    addPictures(newFiles);
-  };
-
   return (
-    <label>
+    <label className="cursor-pointer">
       +
       <input
         id="file"
@@ -18,7 +13,7 @@ export default function Uploader() {
         accept="image/*"
         multiple
         className="hidden"
-        onChange={(e) => e.target?.files && handleAddPictures(e.target.files)}
+        onChange={(e) => e.target?.files && addPictures(e.target.files)}
       />
     </label>
   );
