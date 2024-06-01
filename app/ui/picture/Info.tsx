@@ -1,6 +1,7 @@
 import { setDateString, setByteString } from "@/app/lib/utils/string";
 import { downloadFile } from "@/app/lib/utils/file";
 import { Button } from "@/app/ui/common/Button";
+import { Container } from "@/app/ui/common/Container";
 import { usePictures } from "@/app/lib/hooks/usePictures";
 
 export default function Info() {
@@ -8,7 +9,7 @@ export default function Info() {
   const picture = pictures[selectedIndex];
 
   return (
-    <div className="p-4 flex flex-col gap-2 flex-grow">
+    <Container style="min-w-80">
       <div>사진 정보</div>
       {picture ? (
         <div className="flex flex-col w-full gap-2">
@@ -24,6 +25,6 @@ export default function Info() {
           />
         </div>
       ) : null}
-    </div>
+    </Container>
   );
 }

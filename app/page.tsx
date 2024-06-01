@@ -12,12 +12,12 @@ export default function Home() {
       <PictureList />
       <div
         onMouseDown={(e) => handleMouseDown(e)}
-        className="w-2 bg-gray-200 cursor-col-resize"
+        className="w-2 bg-gray-200 cursor-col-resize hover:bg-blue-300"
       />
       <PictureInfo />
       <div
         onMouseDown={(e) => handleMouseDown(e)}
-        className="w-2 bg-gray-200 cursor-col-resize"
+        className="w-2 bg-gray-200 cursor-col-resize hover:bg-blue-300"
       />
       <PreviewImage />
     </main>
