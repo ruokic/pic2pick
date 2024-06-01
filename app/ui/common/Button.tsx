@@ -1,6 +1,5 @@
 interface ButtonProps {
   primary?: boolean;
-  backgroundColor?: string;
   size?: "small" | "medium" | "large";
   label: string;
   onClick?: () => void;
@@ -14,14 +13,16 @@ const sizeMap = {
 
 export const Button = ({
   primary = false,
+  warning = false,
   size = "medium",
-  backgroundColor,
   label,
   ...props
 }: ButtonProps) => {
   const defaultStyle =
     "font-sans font-bold rounded-full cursor-pointer leading-none";
-  const mode = primary
+  const mode = warning
+    ? "text-white bg-red-500"
+    : primary
     ? "text-white bg-blue-500"
     : "text-black bg-transparent shadow";
   return (

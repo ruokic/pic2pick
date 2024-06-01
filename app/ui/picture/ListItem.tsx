@@ -4,18 +4,26 @@ interface ListItemProps {
   picture: Picture;
   selected?: boolean;
   handleClick: () => void;
+  handleRemove: () => void;
 }
 
-export default function ListItem({ picture, selected = false, handleClick }) {
+export default function ListItem({
+  picture,
+  selected = false,
+  handleClick,
+  handleRemove,
+}) {
   return (
-    <button
+    <div
       className={[
-        "rounded-full p-1 hover:bg-blue-100",
+        "rounded-full p-1 px-4 hover:bg-blue-100 flex justify-between",
         selected ? "bg-blue-300" : "",
       ].join(" ")}
-      onClick={handleClick}
     >
-      {picture.name}
-    </button>
+      <button onClick={handleClick}>{picture.name}</button>
+      <button className="text-red-600" onClick={handleRemove}>
+        x
+      </button>
+    </div>
   );
 }
