@@ -9,9 +9,7 @@ const meta = {
     layout: "centered",
   },
   tags: ["autodocs"],
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
+  argTypes: {},
   args: { onClick: fn() },
 } satisfies Meta<typeof Button>;
 
@@ -47,8 +45,7 @@ export const Small: Story = {
 
 export const Warning: Story = {
   args: {
-    primary: true,
+    warning: true,
     label: "Delete",
-    backgroundColor: "red",
   },
 };

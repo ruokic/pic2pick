@@ -12,7 +12,7 @@ export default function ListItem({
   selected = false,
   handleClick,
   handleDelete,
-}) {
+}: ListItemProps) {
   return (
     <div
       className={[

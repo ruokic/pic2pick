@@ -1,6 +1,6 @@
 interface ContainerProps {
-  children: JSX.Element;
-  style?: "string";
+  children: JSX.Element | JSX.Element[];
+  style?: string;
 }
 
 export function Container({ children, style = "" }: ContainerProps) {

@@ -7,7 +7,7 @@ export default function PreviewImage() {
   const picture = pictures[selectedIndex];
 
   return (
-    <Container style="relative min-w-80">
+    <Container style="relative w-full min-h-80 h-2/3">
       {picture ? (
         <Image
           src={picture.preview}
@@ -16,7 +16,9 @@ export default function PreviewImage() {
           quality={100}
           alt="uploaded picture"
         />
-      ) : null}
+      ) : (
+        <></>
+      )}
     </Container>
   );
 }

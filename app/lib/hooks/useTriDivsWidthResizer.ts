@@ -21,9 +21,9 @@ export function useTriDivsWidthResizer() {
     const div1Rect = div1.getBoundingClientRect();
     const div2Rect = div2.getBoundingClientRect();
     const div3Rect = div3.getBoundingClientRect();
-    const div1minWidth = window.getComputedStyle(div1).minWidth;
-    const div2minWidth = window.getComputedStyle(div2).minWidth;
-    const div3minWidth = window.getComputedStyle(div3).minWidth;
+    const div1minWidth = parseFloat(window.getComputedStyle(div1).minWidth);
+    const div2minWidth = parseFloat(window.getComputedStyle(div2).minWidth);
+    const div3minWidth = parseFloat(window.getComputedStyle(div3).minWidth);
 
     if (currentResizer.current === resizer1) {
       const newDiv1Width = e.clientX - containerRect.left;

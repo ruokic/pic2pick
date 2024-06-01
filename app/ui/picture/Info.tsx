@@ -9,7 +9,7 @@ export default function Info() {
   const picture = pictures[selectedIndex];
 
   return (
-    <Container style="min-w-80">
+    <Container style="w-full min-h-60 h-1/3">
       <div className="text-lg font-bold">사진 정보</div>
       {picture ? (
         <div className="flex flex-col w-full gap-2">
@@ -23,7 +23,9 @@ export default function Info() {
             onClick={() => downloadFile(picture)}
           />
         </div>
-      ) : null}
+      ) : (
+        <></>
+      )}
     </Container>
   );
 }

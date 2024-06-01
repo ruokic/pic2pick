@@ -1,5 +1,6 @@
 interface ButtonProps {
   primary?: boolean;
+  warning?: boolean;
   size?: "small" | "medium" | "large";
   label: string;
   onClick?: () => void;

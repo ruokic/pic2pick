@@ -33,7 +33,9 @@ export default function List() {
       </div>
       {pictures.length > 0 ? (
         <Button label="전체 삭제" warning onClick={deleteAllPictures} />
-      ) : null}
+      ) : (
+        <></>
+      )}
     </Container>
   );
 }

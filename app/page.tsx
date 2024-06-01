@@ -1,25 +1,20 @@
 "use client";
 import PictureList from "@/app/ui/picture/List";
-import PictureInfo from "@/app/ui/picture/Info";
-import PreviewImage from "@/app/ui/picture/PreviewImage";
-import { useTriDivsWidthResizer } from "@/app/lib/hooks/useTriDivsWidthResizer";
+import PictureDetail from "@/app/ui/picture/Detail";
+import { useWidthResizer } from "@/app/lib/hooks/useWidthResizer";
+import { useHeightResizer } from "@/app/lib/hooks/useHeightResizer";
 
 export default function Home() {
-  const { containerRef, handleMouseDown } = useTriDivsWidthResizer();
+  const { containerRef, handleMouseDown } = useWidthResizer();
 
   return (
-    <main ref={containerRef} className="flex divide-x h-[calc(100vh-66px)]">
+    <main ref={containerRef} className="flex h-[calc(100vh-66px)]">
       <PictureList />
       <div
         onMouseDown={handleMouseDown}
-        className="w-2 bg-gray-200 cursor-col-resize hover:bg-blue-300"
+        className="w-1 bg-gray-200 cursor-col-resize hover:bg-blue-300"
       />
-      <PictureInfo />
-      <div
-        onMouseDown={handleMouseDown}
-        className="w-2 bg-gray-200 cursor-col-resize hover:bg-blue-300"
-      />
-      <PreviewImage />
+      <PictureDetail />
     </main>
   );
 }
