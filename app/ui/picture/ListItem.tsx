@@ -4,14 +4,14 @@ interface ListItemProps {
   picture: Picture;
   selected?: boolean;
   handleClick: () => void;
-  handleRemove: () => void;
+  handleDelete: () => void;
 }
 
 export default function ListItem({
   picture,
   selected = false,
   handleClick,
-  handleRemove,
+  handleDelete,
 }) {
   return (
     <div
@@ -21,7 +21,7 @@ export default function ListItem({
       ].join(" ")}
     >
       <button onClick={handleClick}>{picture.name}</button>
-      <button className="text-red-600" onClick={handleRemove}>
+      <button className="text-red-600" onClick={handleDelete}>
         x
       </button>
     </div>

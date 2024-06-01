@@ -6,8 +6,8 @@ interface PictureStore {
   pictures: Picture[];
   selectedIndex: number;
   addPictures: (newPictures: Picture[]) => void;
-  removePicture: (index: number) => void;
-  removeAllPictures: () => void;
+  deletePicture: (index: number) => void;
+  deleteAllPictures: () => void;
   changeSelectedIndex: (index: number) => void;
 }
 
@@ -18,7 +18,7 @@ export const usePictureStore = create<PictureStore>((set) => ({
     set((state) => ({
       pictures: state.pictures.concat(setPreview(newPictures)),
     })),
-  removePicture: (targetIndex) =>
+  deletePicture: (targetIndex) =>
     set((state) => ({
       selectedIndex:
         targetIndex === state.selectedIndex
@@ -26,6 +26,6 @@ export const usePictureStore = create<PictureStore>((set) => ({
           : state.selectedIndex,
       pictures: state.pictures.filter((_, index) => targetIndex !== index),
     })),
-  removeAllPictures: () => set(() => ({ selectedIndex: 0, pictures: [] })),
+  deleteAllPictures: () => set(() => ({ selectedIndex: 0, pictures: [] })),
   changeSelectedIndex: (index) => set((state) => ({ selectedIndex: index })),
 }));

@@ -10,8 +10,8 @@ export default function List() {
     pictures,
     selectedIndex,
     changeSelectedIndex,
-    removePicture,
-    removeAllPictures,
+    deletePicture,
+    deleteAllPictures,
   } = usePictures();
 
   return (
@@ -27,12 +27,12 @@ export default function List() {
             picture={picture}
             selected={index === selectedIndex}
             handleClick={() => changeSelectedIndex(index)}
-            handleRemove={() => removePicture(index)}
+            handleDelete={() => deletePicture(index)}
           />
         ))}
       </div>
       {pictures.length > 0 ? (
-        <Button label="전체 삭제" warning onClick={removeAllPictures} />
+        <Button label="전체 삭제" warning onClick={deleteAllPictures} />
       ) : null}
     </Container>
   );
