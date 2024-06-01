@@ -21,16 +21,25 @@ export function useTriDivsWidthResizer() {
     const div1Rect = div1.getBoundingClientRect();
     const div2Rect = div2.getBoundingClientRect();
     const div3Rect = div3.getBoundingClientRect();
+    const div1minWidth = window.getComputedStyle(div1).minWidth;
+    const div2minWidth = window.getComputedStyle(div2).minWidth;
+    const div3minWidth = window.getComputedStyle(div3).minWidth;
 
     if (currentResizer.current === resizer1) {
-      const newWidth = e.clientX - containerRect.left;
-      div1.style.width = `${newWidth}px`;
-      div2.style.width = `${div2Rect.right - e.clientX}px`;
+      const newDiv1Width = e.clientX - containerRect.left;
+      const newDiv2Width = div2Rect.right - e.clientX;
+      if (newDiv1Width < div1minWidth) return;
+      if (newDiv2Width < div2minWidth) return;
+      div1.style.width = `${newDiv1Width}px`;
+      div2.style.width = `${newDiv2Width}px`;
     } else if (currentResizer.current === resizer2) {
-      const newWidth =
+      const newDiv2Width =
         e.clientX - div1Rect.width - containerRect.left - resizer1.offsetWidth;
-      div2.style.width = `${newWidth}px`;
-      div3.style.width = `${containerRect.right - e.clientX}px`;
+      const newDiv3Width = containerRect.right - e.clientX;
+      if (newDiv2Width < div2minWidth) return;
+      if (newDiv3Width < div3minWidth) return;
+      div2.style.width = `${newDiv2Width}px`;
+      div3.style.width = `${newDiv3Width}px`;
     }
   };
 
