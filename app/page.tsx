@@ -1,25 +1,20 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
-import PreviewImage from "@/app/ui/picture/PreviewImage";
 import PictureList from "@/app/ui/picture/List";
-import PictureInfo from "@/app/ui/picture/Info";
-import Uploader from "@/app/ui/picture/Uploader";
-import { usePictureStore } from "@/app/lib/store/usePictureStore";
+import PictureDetail from "@/app/ui/picture/Detail";
+import { useWidthResizer } from "@/app/lib/hooks/useWidthResizer";
+import { useHeightResizer } from "@/app/lib/hooks/useHeightResizer";
 
 export default function Home() {
-  const { pictures, selectedIndex } = usePictureStore();
-
-  useEffect(() => {
-    return () => {
-      pictures.map((picture) => URL.revokeObjectURL(picture.preview));
-    };
-  }, []);
+  const { containerRef, handleMouseDown } = useWidthResizer();
 
   return (
-    <main className="flex divide-x h-[calc(100vh-66px)]">
+    <main ref={containerRef} className="flex h-[calc(100vh-66px)]">
       <PictureList />
-      <PictureInfo picture={pictures[selectedIndex]} />
-      <PreviewImage picture={pictures[selectedIndex]} />
+      <div
+        onMouseDown={handleMouseDown}
+        className="w-1 bg-gray-200 cursor-col-resize hover:bg-blue-300"
+      />
+      <PictureDetail />
     </main>
   );
 }

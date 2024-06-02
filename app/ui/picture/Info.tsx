@@ -1,23 +1,31 @@
-import { Picture } from "@/app/lib/types/picture";
+import { setDateString, setByteString } from "@/app/lib/utils/string";
+import { downloadFile } from "@/app/lib/utils/file";
+import { Button } from "@/app/ui/common/Button";
+import { Container } from "@/app/ui/common/Container";
+import { usePictures } from "@/app/lib/hooks/usePictures";
 
-interface InfoProps {
-  picture: Picture;
-}
+export default function Info() {
+  const { pictures, selectedIndex } = usePictures();
+  const picture = pictures[selectedIndex];
 
-export default function Info({ picture }: InfoProps) {
   return (
-    <div className="p-4 flex flex-col gap-2">
-      <div>사진 정보</div>
+    <Container style="w-full min-h-60 h-1/3">
+      <div className="text-lg font-bold">사진 정보</div>
       {picture ? (
-        <div>
+        <div className="flex flex-col w-full gap-2">
           <div>이름 : {picture.name}</div>
-          <div>
-            수정일자 : {new Date(picture.lastModified).toLocaleString()}
-          </div>
-          <div>사진 크기 : {picture.size}</div>
+          <div>수정일자 : {setDateString(picture.lastModified)}</div>
+          <div>사진 크기 : {setByteString(picture.size)}</div>
           <div>사진 타입 : {picture.type}</div>
+          <Button
+            primary
+            label="다운로드"
+            onClick={() => downloadFile(picture)}
+          />
         </div>
-      ) : null}
-    </div>
+      ) : (
+        <></>
+      )}
+    </Container>
   );
 }

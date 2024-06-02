@@ -1,22 +1,24 @@
 import Image from "next/image";
-import { Picture } from "@/app/lib/types/picture";
+import { Container } from "@/app/ui/common/Container";
+import { usePictures } from "@/app/lib/hooks/usePictures";
 
-interface PreviewImageProps {
-  picture: Picture;
-}
+export default function PreviewImage() {
+  const { pictures, selectedIndex } = usePictures();
+  const picture = pictures[selectedIndex];
 
-export default function PreviewImage({ picture }: PreviewImageProps) {
   return (
-    <div>
+    <Container style="relative w-full min-h-80 h-2/3">
       {picture ? (
         <Image
           src={picture.preview}
-          width="500"
-          height="300"
+          className="object-contain p-4"
+          fill
           quality={100}
           alt="uploaded picture"
         />
-      ) : null}
-    </div>
+      ) : (
+        <></>
+      )}
+    </Container>
   );
 }
