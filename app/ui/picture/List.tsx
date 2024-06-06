@@ -1,6 +1,7 @@
 import Uploader from "@/app/ui/picture/Uploader";
 import ListItem from "@/app/ui/picture/ListItem";
 import { Container } from "@/app/ui/common/Container";
+import { List as Li } from "@/app/ui/common/List";
 import { Button } from "@/app/ui/common/Button";
 import { Picture } from "@/app/lib/types/picture";
 import { usePictures } from "@/app/lib/hooks/usePictures";
@@ -20,7 +21,7 @@ export default function List() {
         사진 목록
         <Uploader />
       </div>
-      <div className="flex flex-col m-2 overflow-y-auto">
+      <Li>
         {pictures.map((picture, index) => (
           <ListItem
             key={picture.preview}
@@ -30,7 +31,7 @@ export default function List() {
             handleDelete={() => deletePicture(index)}
           />
         ))}
-      </div>
+      </Li>
       {pictures.length > 0 ? (
         <Button label="전체 삭제" warning onClick={deleteAllPictures} />
       ) : (

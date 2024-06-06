@@ -1,8 +1,8 @@
-import { usePictureStore } from "@/app/lib/store/usePictureStore";
+import { usePictures } from "@/app/lib/hooks/usePictures";
 import { setPreview } from "@/app/lib/utils/array";
 
 export default function Uploader() {
-  const { addPictures } = usePictureStore();
+  const { addPictures } = usePictures();
 
   return (
     <label className="cursor-pointer">
