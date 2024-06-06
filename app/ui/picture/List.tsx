@@ -2,6 +2,7 @@ import Uploader from "@/app/ui/picture/Uploader";
 import ListItem from "@/app/ui/picture/ListItem";
 import { Container } from "@/app/ui/common/Container";
 import { List as Li } from "@/app/ui/common/List";
+import { Text } from "@/app/ui/common/Text";
 import { Button } from "@/app/ui/common/Button";
 import { Picture } from "@/app/lib/types/picture";
 import { usePictures } from "@/app/lib/hooks/usePictures";
@@ -17,8 +18,10 @@ export default function List() {
 
   return (
     <Container style="min-w-80">
-      <div className="flex justify-between text-lg font-bold">
-        사진 목록
+      <div className="flex justify-between">
+        <Text size="lg" weight="bold">
+          사진 목록
+        </Text>
         <Uploader />
       </div>
       <Li>
