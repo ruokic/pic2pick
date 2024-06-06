@@ -3,10 +3,10 @@ import { downloadFile } from "@/app/lib/utils/file";
 import { Button } from "@/app/ui/common/Button";
 import { Container } from "@/app/ui/common/Container";
 import { Text } from "@/app/ui/common/Text";
-import { usePictures } from "@/app/lib/hooks/usePictures";
+import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function Info() {
-  const { pictures, selectedIndex } = usePictures();
+  const { pictures, selectedIndex } = usePictureStore();
   const picture = pictures[selectedIndex];
 
   return (

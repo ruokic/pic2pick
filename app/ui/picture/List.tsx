@@ -5,10 +5,10 @@ import { List as PictureList } from "@/app/ui/common/List";
 import { Text } from "@/app/ui/common/Text";
 import { Button } from "@/app/ui/common/Button";
 import { Picture } from "@/app/lib/types/picture";
-import { usePictures } from "@/app/lib/hooks/usePictures";
+import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function List() {
-  const { pictures, deleteAllPictures } = usePictures();
+  const { pictures, deleteAllPictures } = usePictureStore();
 
   return (
     <Container style="min-w-80">

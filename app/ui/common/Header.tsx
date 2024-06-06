@@ -5,8 +5,8 @@ import { Text } from "@/app/ui/common/Text";
 export function Header() {
   return (
     <header className="w-full flex align-center justify-between p-4 shadow">
-      <Link href="#">
-        <Text size="2xl">Pic2Pick</Text>
+      <Link href="/" className="text-2xl">
+        Pic2Pick
       </Link>
       <div>
         <Button primary={true} label={"Nothing"} />

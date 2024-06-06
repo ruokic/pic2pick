@@ -2,7 +2,7 @@ interface TextProps {
   size?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl";
   weight?: "light" | "normal" | "bold";
   color?: "inherit" | "white";
-  children: JSX.Element | JSX.Element[] | string;
+  children: string;
 }
 
 export function Text({

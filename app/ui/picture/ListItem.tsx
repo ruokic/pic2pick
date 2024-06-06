@@ -1,6 +1,6 @@
 import { Picture } from "@/app/lib/types/picture";
 import { ListItem as Li } from "@/app/ui/common/ListItem";
-import { usePictures } from "@/app/lib/hooks/usePictures";
+import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 interface ListItemProps {
   picture: Picture;
@@ -8,7 +8,8 @@ interface ListItemProps {
 }
 
 export default function ListItem({ picture, index }: ListItemProps) {
-  const { selectedIndex, changeSelectedIndex, deletePicture } = usePictures();
+  const { selectedIndex, changeSelectedIndex, deletePicture } =
+    usePictureStore();
   return (
     <Li selected={index === selectedIndex}>
       <button className="truncate" onClick={() => changeSelectedIndex(index)}>
