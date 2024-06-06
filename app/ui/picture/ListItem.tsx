@@ -16,7 +16,7 @@ export default function ListItem({
   return (
     <div
       className={[
-        "rounded-full p-1 px-4 hover:bg-blue-100 flex justify-between",
+        "rounded p-1 px-4 hover:bg-blue-100 flex justify-between",
         selected ? "bg-blue-300" : "",
       ].join(" ")}
     >
