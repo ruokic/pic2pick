@@ -1,26 +1,33 @@
 import Uploader from "@/app/ui/picture/Uploader";
+import ListItem from "@/app/ui/picture/ListItem";
+import { Container } from "@/app/ui/common/Container";
+import { List as PictureList } from "@/app/ui/common/List";
+import { Text } from "@/app/ui/common/Text";
+import { Button } from "@/app/ui/common/Button";
 import { Picture } from "@/app/lib/types/picture";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function List() {
-  const { pictures, changeSelectedIndex } = usePictureStore();
+  const { pictures, deleteAllPictures } = usePictureStore();
 
   return (
-    <div className="p-4 flex flex-col gap-2">
+    <Container style="min-w-80">
       <div className="flex justify-between">
-        사진 목록
+        <Text size="lg" weight="bold">
+          사진 목록
+        </Text>
         <Uploader />
       </div>
-      <div className="flex flex-col gap-2 m-2">
+      <PictureList>
         {pictures.map((picture, index) => (
-          <button
-            key={picture.preview}
-            onClick={() => changeSelectedIndex(index)}
-          >
-            {picture.name}
-          </button>
+          <ListItem key={picture.preview} picture={picture} index={index} />
         ))}
-      </div>
-    </div>
+      </PictureList>
+      {pictures.length > 0 ? (
+        <Button label="전체 삭제" warning onClick={deleteAllPictures} />
+      ) : (
+        <></>
+      )}
+    </Container>
   );
 }

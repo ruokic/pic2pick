@@ -1,23 +1,44 @@
-import { Picture } from "@/app/lib/types/picture";
+import { setDateString, setByteString } from "@/app/lib/utils/string";
+import { downloadFile } from "@/app/lib/utils/file";
+import { Button } from "@/app/ui/common/Button";
+import { Container } from "@/app/ui/common/Container";
+import { Text } from "@/app/ui/common/Text";
+import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
-interface InfoProps {
-  picture: Picture;
-}
+export default function Info() {
+  const { pictures, selectedIndex } = usePictureStore();
+  const picture = pictures[selectedIndex];
 
-export default function Info({ picture }: InfoProps) {
   return (
-    <div className="p-4 flex flex-col gap-2">
-      <div>사진 정보</div>
+    <Container style="w-full min-h-60 h-1/3">
+      <Text size="lg" weight="bold">
+        사진 정보
+      </Text>
       {picture ? (
-        <div>
-          <div>이름 : {picture.name}</div>
-          <div>
-            수정일자 : {new Date(picture.lastModified).toLocaleString()}
+        <>
+          <div className="grid grid-cols-2 w-full gap-2">
+            <div className="grid grid-cols-2">
+              <Text>이름</Text>
+              <Text>{picture.name}</Text>
+              <Text>수정일자</Text>
+              <Text>{setDateString(picture.lastModified)}</Text>
+            </div>
+            <div className="grid grid-cols-2">
+              <Text>사진 크기</Text>
+              <Text>{setByteString(picture.size)}</Text>
+              <Text>사진 타입</Text>
+              <Text>{picture.type}</Text>
+            </div>
           </div>
-          <div>사진 크기 : {picture.size}</div>
-          <div>사진 타입 : {picture.type}</div>
-        </div>
-      ) : null}
-    </div>
+          <Button
+            primary
+            label="다운로드"
+            onClick={() => downloadFile(picture)}
+          />
+        </>
+      ) : (
+        <></>
+      )}
+    </Container>
   );
 }
