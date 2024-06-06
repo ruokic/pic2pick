@@ -1,4 +1,5 @@
 "use client";
+import { Divider } from "@/app/ui/common/Divider";
 import PictureList from "@/app/ui/picture/List";
 import PictureDetail from "@/app/ui/picture/Detail";
 import { useWidthResizer } from "@/app/lib/hooks/useWidthResizer";
@@ -10,10 +11,7 @@ export default function Home() {
   return (
     <main ref={containerRef} className="flex h-[calc(100vh-66px)]">
       <PictureList />
-      <div
-        onMouseDown={handleMouseDown}
-        className="w-1 bg-gray-200 cursor-col-resize hover:bg-blue-300"
-      />
+      <Divider resizable onMouseDown={handleMouseDown} />
       <PictureDetail />
     </main>
   );
