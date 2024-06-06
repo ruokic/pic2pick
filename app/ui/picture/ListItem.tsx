@@ -1,29 +1,22 @@
 import { Picture } from "@/app/lib/types/picture";
+import { ListItem as Li } from "@/app/ui/common/ListItem";
+import { usePictures } from "@/app/lib/hooks/usePictures";
 
 interface ListItemProps {
   picture: Picture;
-  selected?: boolean;
-  handleClick: () => void;
-  handleDelete: () => void;
+  index: number;
 }
 
-export default function ListItem({
-  picture,
-  selected = false,
-  handleClick,
-  handleDelete,
-}: ListItemProps) {
+export default function ListItem({ picture, index }: ListItemProps) {
+  const { selectedIndex, changeSelectedIndex, deletePicture } = usePictures();
   return (
-    <div
-      className={[
-        "rounded p-1 px-4 hover:bg-blue-100 flex justify-between",
-        selected ? "bg-blue-300" : "",
-      ].join(" ")}
-    >
-      <button onClick={handleClick}>{picture.name}</button>
-      <button className="text-red-600" onClick={handleDelete}>
+    <Li selected={index === selectedIndex}>
+      <button className="truncate" onClick={() => changeSelectedIndex(index)}>
+        {picture.name}
+      </button>
+      <button className="text-red-600" onClick={() => deletePicture(index)}>
         x
       </button>
-    </div>
+    </Li>
   );
 }
