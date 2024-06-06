@@ -20,7 +20,7 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const defaultStyle =
-    "font-sans font-bold rounded-full cursor-pointer leading-none";
+    "font-sans font-bold rounded cursor-pointer leading-none";
   const mode = warning
     ? "text-white bg-red-500"
     : primary

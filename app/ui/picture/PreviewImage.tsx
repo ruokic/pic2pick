@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Container } from "@/app/ui/common/Container";
-import { usePictures } from "@/app/lib/hooks/usePictures";
+import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function PreviewImage() {
-  const { pictures, selectedIndex } = usePictures();
+  const { pictures, selectedIndex } = usePictureStore();
   const picture = pictures[selectedIndex];
 
   return (

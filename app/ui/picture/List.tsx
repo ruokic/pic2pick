@@ -1,36 +1,28 @@
 import Uploader from "@/app/ui/picture/Uploader";
 import ListItem from "@/app/ui/picture/ListItem";
 import { Container } from "@/app/ui/common/Container";
+import { List as PictureList } from "@/app/ui/common/List";
+import { Text } from "@/app/ui/common/Text";
 import { Button } from "@/app/ui/common/Button";
 import { Picture } from "@/app/lib/types/picture";
-import { usePictures } from "@/app/lib/hooks/usePictures";
+import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function List() {
-  const {
-    pictures,
-    selectedIndex,
-    changeSelectedIndex,
-    deletePicture,
-    deleteAllPictures,
-  } = usePictures();
+  const { pictures, deleteAllPictures } = usePictureStore();
 
   return (
     <Container style="min-w-80">
-      <div className="flex justify-between text-lg font-bold">
-        사진 목록
+      <div className="flex justify-between">
+        <Text size="lg" weight="bold">
+          사진 목록
+        </Text>
         <Uploader />
       </div>
-      <div className="flex flex-col m-2 overflow-y-auto">
+      <PictureList>
         {pictures.map((picture, index) => (
-          <ListItem
-            key={picture.preview}
-            picture={picture}
-            selected={index === selectedIndex}
-            handleClick={() => changeSelectedIndex(index)}
-            handleDelete={() => deletePicture(index)}
-          />
+          <ListItem key={picture.preview} picture={picture} index={index} />
         ))}
-      </div>
+      </PictureList>
       {pictures.length > 0 ? (
         <Button label="전체 삭제" warning onClick={deleteAllPictures} />
       ) : (
