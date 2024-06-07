@@ -6,7 +6,7 @@ import { Text } from "@/app/ui/common/Text";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function Info() {
-  const { pictures, selectedIndex } = usePictureStore();
+  const { pictures, selectedIndex, deletePicture } = usePictureStore();
   const picture = pictures[selectedIndex];
 
   return (
@@ -30,11 +30,18 @@ export default function Info() {
               <Text>{picture.type}</Text>
             </div>
           </div>
-          <Button
-            primary
-            label="다운로드"
-            onClick={() => downloadFile(picture)}
-          />
+          <div className="grid grid-cols-2 w-full gap-2">
+            <Button
+              primary
+              label="다운로드"
+              onClick={() => downloadFile(picture)}
+            />
+            <Button
+              warning
+              label="삭제"
+              onClick={() => deletePicture(selectedIndex)}
+            />
+          </div>
         </>
       ) : (
         <></>
