@@ -9,7 +9,7 @@ export function Header() {
         Pic2Pick
       </Link>
       <div>
-        <Button primary={true} label={"Nothing"} />
+        <Button primary label={"Nothing"} />
       </div>
     </header>
   );

@@ -8,15 +8,24 @@ interface ListItemProps {
 }
 
 export default function ListItem({ picture, index }: ListItemProps) {
-  const { selectedIndex, changeSelectedIndex, deletePicture } =
-    usePictureStore();
+  const {
+    selectedIndex,
+    changeSelectedIndex,
+    checkedIndexSet,
+    checkIndex,
+    uncheckIndex,
+  } = usePictureStore();
   return (
     <Li selected={index === selectedIndex}>
+      <input
+        type="checkbox"
+        checked={checkedIndexSet.has(index)}
+        onChange={() =>
+          checkedIndexSet.has(index) ? uncheckIndex(index) : checkIndex(index)
+        }
+      />
       <button className="truncate" onClick={() => changeSelectedIndex(index)}>
         {picture.name}
-      </button>
-      <button className="text-red-600" onClick={() => deletePicture(index)}>
-        x
       </button>
     </Li>
   );

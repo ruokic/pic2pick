@@ -3,5 +3,5 @@ interface ListProps {
 }
 
 export function List({ children }: ListProps) {
-  return <ul className="flex flex-col overflow-y-auto">{children}</ul>;
+  return <ul className="flex flex-col overflow-y-auto h-full">{children}</ul>;
 }
