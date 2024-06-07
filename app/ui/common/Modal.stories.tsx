@@ -16,7 +16,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const Template: Story<ModalProps> = (args) => {
+const Template = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -30,4 +30,4 @@ const Template: Story<ModalProps> = (args) => {
   );
 };
 
-export const Default: Story = Template.bind({});
+export const Default = Template.bind({});
