@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { Button } from "@/app/ui/common/Button";
-import { Text } from "@/app/ui/common/Text";
+import { Button, Text } from "@/app/ui/components";
 
 export function Header() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import { Divider } from "@/app/ui/common/Divider";
+import { Divider } from "@/app/ui/components";
 import PictureList from "@/app/ui/picture/List";
 import PictureDetail from "@/app/ui/picture/Detail";
 import { useWidthResizer } from "@/app/lib/hooks/useWidthResizer";

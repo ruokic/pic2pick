@@ -1,5 +1,5 @@
 import { Picture } from "@/app/lib/types/picture";
-import { ListItem as Li } from "@/app/ui/common/ListItem";
+import { ListItem as Li } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 interface ListItemProps {

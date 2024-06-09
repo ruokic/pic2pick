@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Container } from "@/app/ui/common/Container";
+import { Container } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function PreviewImage() {
