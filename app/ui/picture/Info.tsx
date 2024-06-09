@@ -1,12 +1,10 @@
 import { setDateString, setByteString } from "@/app/lib/utils/string";
 import { downloadFile } from "@/app/lib/utils/file";
-import { Button } from "@/app/ui/common/Button";
-import { Container } from "@/app/ui/common/Container";
-import { Text } from "@/app/ui/common/Text";
+import { Button, Container, Text } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function Info() {
-  const { pictures, selectedIndex } = usePictureStore();
+  const { pictures, selectedIndex, deletePicture } = usePictureStore();
   const picture = pictures[selectedIndex];
 
   return (
@@ -30,11 +28,18 @@ export default function Info() {
               <Text>{picture.type}</Text>
             </div>
           </div>
-          <Button
-            primary
-            label="다운로드"
-            onClick={() => downloadFile(picture)}
-          />
+          <div className="grid grid-cols-2 w-full gap-2">
+            <Button
+              primary
+              label="다운로드"
+              onClick={() => downloadFile(picture)}
+            />
+            <Button
+              warning
+              label="삭제"
+              onClick={() => deletePicture(selectedIndex)}
+            />
+          </div>
         </>
       ) : (
         <></>
