@@ -1,6 +1,6 @@
 import { setDateString, setByteString } from "@/app/lib/utils/string";
 import { downloadFile } from "@/app/lib/utils/file";
-import { Button, Container, Text } from "@/app/ui/common";
+import { Button, Container, Text } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
 export default function Info() {

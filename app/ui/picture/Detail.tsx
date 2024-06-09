@@ -1,4 +1,4 @@
-import { Divider } from "@/app/ui/common";
+import { Divider } from "@/app/ui/components";
 import PictureInfo from "@/app/ui/picture/Info";
 import PreviewImage from "@/app/ui/picture/PreviewImage";
 import { useHeightResizer } from "@/app/lib/hooks/useHeightResizer";
