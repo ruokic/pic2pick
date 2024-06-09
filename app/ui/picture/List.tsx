@@ -1,9 +1,6 @@
 import Uploader from "@/app/ui/picture/Uploader";
 import ListItem from "@/app/ui/picture/ListItem";
-import { Container } from "@/app/ui/common/Container";
-import { List as PictureList } from "@/app/ui/common/List";
-import { Text } from "@/app/ui/common/Text";
-import { Button } from "@/app/ui/common/Button";
+import { Button, Container, List as PictureList, Text } from "@/app/ui/common";
 import { Picture } from "@/app/lib/types/picture";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 import { downloadFile } from "@/app/lib/utils/file";
