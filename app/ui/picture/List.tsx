@@ -20,6 +20,11 @@ export default function PictureList() {
     });
   };
 
+  const handleToggleCheckAllIndex = () =>
+    checkedIndexSet?.size < pictures?.length
+      ? checkAllIndex()
+      : uncheckAllIndex();
+
   return (
     <Container style="min-w-80 h-full">
       <div className="flex justify-between">
@@ -35,11 +40,7 @@ export default function PictureList() {
               id="checkall"
               type="checkbox"
               checked={pictures?.length === checkedIndexSet?.size}
-              onChange={() =>
-                checkedIndexSet?.size < pictures?.length
-                  ? checkAllIndex()
-                  : uncheckAllIndex()
-              }
+              onChange={handleToggleCheckAllIndex}
             />
             <label htmlFor="checkall">
               <Text>전체 선택</Text>

@@ -18,14 +18,16 @@ export default function PictureListItem({
     checkIndex,
     uncheckIndex,
   } = usePictureStore();
+
+  const handleToggleCheckIndex = () =>
+    checkedIndexSet.has(index) ? uncheckIndex(index) : checkIndex(index);
+
   return (
     <ListItem selected={index === selectedIndex}>
       <input
         type="checkbox"
         checked={checkedIndexSet.has(index)}
-        onChange={() =>
-          checkedIndexSet.has(index) ? uncheckIndex(index) : checkIndex(index)
-        }
+        onChange={handleToggleCheckIndex}
       />
       <button className="truncate" onClick={() => changeSelectedIndex(index)}>
         {picture.name}
