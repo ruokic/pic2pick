@@ -1,14 +1,14 @@
 import { Divider } from "@/app/ui/components";
 import PictureInfo from "@/app/ui/picture/Info";
-import PreviewImage from "@/app/ui/picture/PreviewImage";
+import PicturePreview from "@/app/ui/picture/Preview";
 import { useHeightResizer } from "@/app/lib/hooks/useHeightResizer";
 
-export default function Detail() {
+export default function PictureDetail() {
   const { containerRef, handleMouseDown } = useHeightResizer();
 
   return (
     <div ref={containerRef} className="flex flex-col w-2/3">
-      <PreviewImage />
+      <PicturePreview />
       <Divider type="horizontal" resizable onMouseDown={handleMouseDown} />
       <PictureInfo />
     </div>

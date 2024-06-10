@@ -1,7 +1,7 @@
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 import { setPreview } from "@/app/lib/utils/array";
 
-export default function Uploader() {
+export default function PictureUploader() {
   const { addPictures } = usePictureStore();
 
   return (
