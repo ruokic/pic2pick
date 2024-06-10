@@ -2,17 +2,17 @@ import Image from "next/image";
 import { Modal } from "@/app/ui/components";
 import { Picture } from "@/app/lib/types/picture";
 
-interface ModalImageProps {
+interface EnlargedPreviewProps {
   picture: Picture;
   showModal: boolean;
   setShowModal: (nextShowModal: boolean) => void;
 }
 
-export default function ModalImage({
+export default function EnlargedPreview({
   picture,
   showModal,
   setShowModal,
-}: ModalImageProps) {
+}: EnlargedPreviewProps) {
   return (
     <Modal
       showModal={showModal}
