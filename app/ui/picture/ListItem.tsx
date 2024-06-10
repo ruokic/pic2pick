@@ -1,13 +1,16 @@
 import { Picture } from "@/app/lib/types/picture";
-import { ListItem as Li } from "@/app/ui/components";
+import { ListItem } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
-interface ListItemProps {
+interface PictureListItemProps {
   picture: Picture;
   index: number;
 }
 
-export default function ListItem({ picture, index }: ListItemProps) {
+export default function PictureListItem({
+  picture,
+  index,
+}: PictureListItemProps) {
   const {
     selectedIndex,
     changeSelectedIndex,
@@ -16,7 +19,7 @@ export default function ListItem({ picture, index }: ListItemProps) {
     uncheckIndex,
   } = usePictureStore();
   return (
-    <Li selected={index === selectedIndex}>
+    <ListItem selected={index === selectedIndex}>
       <input
         type="checkbox"
         checked={checkedIndexSet.has(index)}
@@ -27,6 +30,6 @@ export default function ListItem({ picture, index }: ListItemProps) {
       <button className="truncate" onClick={() => changeSelectedIndex(index)}>
         {picture.name}
       </button>
-    </Li>
+    </ListItem>
   );
 }

@@ -3,7 +3,7 @@ import { downloadFile } from "@/app/lib/utils/file";
 import { Button, Container, Text } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
-export default function Info() {
+export default function PictureInfo() {
   const { pictures, selectedIndex, deletePicture } = usePictureStore();
   const picture = pictures[selectedIndex];
 

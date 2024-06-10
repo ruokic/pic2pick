@@ -1,16 +1,11 @@
-import Uploader from "@/app/ui/picture/Uploader";
-import ListItem from "@/app/ui/picture/ListItem";
-import {
-  Button,
-  Container,
-  List as PictureList,
-  Text,
-} from "@/app/ui/components";
+import PictureUploader from "@/app/ui/picture/Uploader";
+import PictureListItem from "@/app/ui/picture/ListItem";
+import { Button, Container, List, Text } from "@/app/ui/components";
 import { Picture } from "@/app/lib/types/picture";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 import { downloadFile } from "@/app/lib/utils/file";
 
-export default function List() {
+export default function PictureList() {
   const {
     pictures,
     deleteCheckedPictures,
@@ -31,7 +26,7 @@ export default function List() {
         <Text size="lg" weight="bold">
           사진 목록
         </Text>
-        <Uploader />
+        <PictureUploader />
       </div>
       {pictures.length > 0 ? (
         <>
@@ -51,11 +46,15 @@ export default function List() {
             </label>
           </div>
 
-          <PictureList>
+          <List>
             {pictures.map((picture, index) => (
-              <ListItem key={picture.preview} picture={picture} index={index} />
+              <PictureListItem
+                key={picture.preview}
+                picture={picture}
+                index={index}
+              />
             ))}
-          </PictureList>
+          </List>
           <div className="flex flex-col gap-2 justify-self-end">
             <Button
               label="선택 다운로드"

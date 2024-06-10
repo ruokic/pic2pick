@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Container, Modal } from "@/app/ui/components";
-import ModalImage from "@/app/ui/picture/ModalImage";
+import PictureEnlargedPreview from "@/app/ui/picture/EnlargedPreview";
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
 
-export default function PreviewImage() {
+export default function PicturePreview() {
   const { pictures, selectedIndex } = usePictureStore();
   const [showModal, setShowModal] = useState(false);
   const picture = pictures[selectedIndex];
@@ -22,7 +22,7 @@ export default function PreviewImage() {
               alt={picture.name}
             />
           </button>
-          <ModalImage
+          <PictureEnlargedPreview
             picture={picture}
             showModal={showModal}
             setShowModal={setShowModal}
