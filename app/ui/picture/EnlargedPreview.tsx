@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Modal } from "@/app/ui/components";
-import { IPicture } from "@/app/lib/types/picture";
+import { IPicture } from "@/app/lib/types";
 
 interface EnlargedPreviewProps {
   picture: IPicture;

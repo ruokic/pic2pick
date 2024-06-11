@@ -1,4 +1,4 @@
-import { IPicture } from "@/app/lib/types/picture";
+import { IPicture } from "@/app/lib/types";
 
 export function downloadFile(file: IPicture) {
   const reader = new FileReader();

@@ -1,7 +1,6 @@
 import { create } from "zustand";
-import { Picture } from "@/app/lib/classes/Picture";
-import { IPicture } from "@/app/lib/types/picture";
-import { setPreview } from "@/app/lib/utils/array";
+import { Picture } from "@/app/lib/classes";
+import { IPicture } from "@/app/lib/types";
 
 interface IPictureStore {
   pictures: IPicture[];

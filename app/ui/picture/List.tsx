@@ -1,8 +1,8 @@
 import PictureUploader from "@/app/ui/picture/Uploader";
 import PictureListItem from "@/app/ui/picture/ListItem";
 import { Button, Container, List, Text } from "@/app/ui/components";
-import { usePictureStore } from "@/app/lib/store/usePictureStore";
-import { downloadFile } from "@/app/lib/utils/file";
+import { usePictureStore } from "@/app/lib/store";
+import { downloadFile } from "@/app/lib/utils";
 
 export default function PictureList() {
   const {

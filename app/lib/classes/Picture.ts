@@ -1,4 +1,4 @@
-import { IPicture } from "@/app/lib/types/picture";
+import { IPicture } from "@/app/lib/types";
 
 export class Picture extends File implements IPicture {
   preview: string;

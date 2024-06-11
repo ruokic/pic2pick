@@ -1,4 +1,4 @@
-import { usePictureStore } from "@/app/lib/store/usePictureStore";
+import { usePictureStore } from "@/app/lib/store";
 
 export default function PictureUploader() {
   const { addPictures } = usePictureStore();

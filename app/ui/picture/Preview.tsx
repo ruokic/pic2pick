@@ -2,7 +2,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Container, Modal } from "@/app/ui/components";
 import PictureEnlargedPreview from "@/app/ui/picture/EnlargedPreview";
-import { usePictureStore } from "@/app/lib/store/usePictureStore";
+import { usePictureStore } from "@/app/lib/store";
 
 export default function PicturePreview() {
   const { pictures, selectedIndex } = usePictureStore();
