@@ -1,12 +1,13 @@
 import { usePictureStore } from "@/app/lib/store/usePictureStore";
-import { setPreview } from "@/app/lib/utils/array";
 
 export default function PictureUploader() {
   const { addPictures } = usePictureStore();
 
   return (
-    <label className="cursor-pointer">
-      +
+    <>
+      <label htmlFor="file" className="cursor-pointer">
+        ➕
+      </label>
       <input
         id="file"
         type="file"
@@ -15,6 +16,6 @@ export default function PictureUploader() {
         className="hidden"
         onChange={(e) => e.target?.files && addPictures(e.target.files)}
       />
-    </label>
+    </>
   );
 }
