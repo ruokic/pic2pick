@@ -1,7 +1,7 @@
-import { setDateString, setByteString } from "@/app/lib/utils/string";
-import { downloadFile } from "@/app/lib/utils/file";
+import { setDateString, setByteString } from "@/app/lib/utils";
+import { downloadFile } from "@/app/lib/utils";
 import { Button, Container, Text } from "@/app/ui/components";
-import { usePictureStore } from "@/app/lib/store/usePictureStore";
+import { usePictureStore } from "@/app/lib/store";
 
 export default function PictureInfo() {
   const { pictures, selectedIndex, deletePicture } = usePictureStore();

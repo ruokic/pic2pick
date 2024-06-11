@@ -1,9 +1,9 @@
-import { Picture } from "@/app/lib/types/picture";
+import { IPicture } from "@/app/lib/types";
 import { ListItem } from "@/app/ui/components";
-import { usePictureStore } from "@/app/lib/store/usePictureStore";
+import { usePictureStore } from "@/app/lib/store";
 
 interface PictureListItemProps {
-  picture: Picture;
+  picture: IPicture;
   index: number;
 }
 

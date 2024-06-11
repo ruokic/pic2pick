@@ -3,10 +3,8 @@ import { useEffect } from "react";
 import { Divider } from "@/app/ui/components";
 import PictureList from "@/app/ui/picture/List";
 import PictureDetail from "@/app/ui/picture/Detail";
-import { useWidthResizer } from "@/app/lib/hooks/useWidthResizer";
-import { useHeightResizer } from "@/app/lib/hooks/useHeightResizer";
-import { usePictureStore } from "@/app/lib/store/usePictureStore";
-import { removePreview } from "@/app/lib/utils/array";
+import { useHeightResizer, useWidthResizer } from "@/app/lib/hooks";
+import { usePictureStore } from "@/app/lib/store";
 
 export default function Home() {
   const { containerRef, handleMouseDown } = useWidthResizer();
@@ -14,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     return () => {
-      removePreview(pictures);
+      pictures.forEach((picture) => picture.revokePreview());
     };
   }, []);
 

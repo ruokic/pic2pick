@@ -1,6 +1,6 @@
-import { Picture } from "@/app/lib/types/picture";
+import { IPicture } from "@/app/lib/types";
 
-export function downloadFile(file: Picture) {
+export function downloadFile(file: IPicture) {
   const reader = new FileReader();
   reader.onload = function (e: ProgressEvent<FileReader>) {
     const arrayBuffer = e.target!.result as ArrayBuffer;

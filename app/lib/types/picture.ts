@@ -1,3 +1,5 @@
-export interface Picture extends File {
+export interface IPicture extends File {
   preview: string;
+
+  revokePreview: () => void;
 }

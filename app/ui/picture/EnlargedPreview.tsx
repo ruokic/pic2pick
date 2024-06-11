@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Modal } from "@/app/ui/components";
-import { Picture } from "@/app/lib/types/picture";
+import { IPicture } from "@/app/lib/types";
 
 interface EnlargedPreviewProps {
-  picture: Picture;
+  picture: IPicture;
   showModal: boolean;
   setShowModal: (nextShowModal: boolean) => void;
 }
