@@ -10,23 +10,20 @@ interface IPictureStore {
 
   addPictures: (fileList: FileList) => void;
 
-  deletePicture: (index: number) => void;
+  deletePicture: (targetIndex: number) => void;
   deleteCheckedPictures: () => void;
   deleteAllPictures: () => void;
 
-  changeSelectedIndex: (index: number) => void;
+  changeSelectedIndex: (targetIndex: number) => void;
 
-  checkIndex: (index: number) => void;
+  checkIndex: (targetIndex: number) => void;
   checkAllIndex: () => void;
 
-  uncheckIndex: (index: number) => void;
+  uncheckIndex: (targetIndex: number) => void;
   uncheckAllIndex: () => void;
 }
 
-export const usePictureStore = create<IPictureStore>((set) => ({
-  pictures: [],
-  selectedIndex: 0,
-  checkedIndexSet: new Set(),
+const pictureActions = (set) => ({
   addPictures: (fileList) =>
     set((state) => ({
       selectedIndex: state.pictures.length + fileList.length - 1,
@@ -62,26 +59,36 @@ export const usePictureStore = create<IPictureStore>((set) => ({
       checkedIndexSet: new Set(),
     })),
   deleteAllPictures: () => set(() => ({ selectedIndex: 0, pictures: [] })),
-  changeSelectedIndex: (index) => set((state) => ({ selectedIndex: index })),
-  checkIndex: (index) =>
+});
+
+const indexActions = (set) => ({
+  changeSelectedIndex: (targetIndex) =>
+    set((state) => ({ selectedIndex: targetIndex })),
+  checkIndex: (targetIndex) =>
     set((state) => {
       const newSet = new Set(state.checkedIndexSet);
-      newSet.add(index);
+      newSet.add(targetIndex);
       return { checkedIndexSet: newSet };
     }),
   checkAllIndex: () =>
     set((state) => ({
       checkedIndexSet: new Set(
-        Array(state.pictures.length)
-          .fill(null)
-          .map((_, i) => i)
+        Array.from({ length: state.picture.length }, (_, index) => index)
       ),
     })),
-  uncheckIndex: (index) =>
+  uncheckIndex: (targetIndex) =>
     set((state) => {
       const newSet = new Set(state.checkedIndexSet);
-      newSet.delete(index);
+      newSet.delete(targetIndex);
       return { checkedIndexSet: newSet };
     }),
   uncheckAllIndex: () => set((state) => ({ checkedIndexSet: new Set() })),
+});
+
+export const usePictureStore = create<IPictureStore>((set) => ({
+  pictures: [],
+  selectedIndex: 0,
+  checkedIndexSet: new Set(),
+  ...pictureActions(set),
+  ...indexActions(set),
 }));
