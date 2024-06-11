@@ -14,7 +14,7 @@ export default function Home() {
 
   useEffect(() => {
     return () => {
-      removePreview(pictures);
+      pictures.forEach((picture) => picture.revokePreview());
     };
   }, []);
 

@@ -1,13 +1,14 @@
 import { create } from "zustand";
-import { Picture } from "@/app/lib/types/picture";
+import { Picture } from "@/app/lib/classes/Picture";
+import { IPicture } from "@/app/lib/types/picture";
 import { setPreview } from "@/app/lib/utils/array";
 
-interface PictureStore {
-  pictures: Picture[];
+interface IPictureStore {
+  pictures: IPicture[];
   selectedIndex: number;
   checkedIndexSet: Set<number>;
 
-  addPictures: (newPictures: FileList) => void;
+  addPictures: (fileList: FileList) => void;
 
   deletePicture: (index: number) => void;
   deleteCheckedPictures: () => void;
@@ -22,14 +23,16 @@ interface PictureStore {
   uncheckAllIndex: () => void;
 }
 
-export const usePictureStore = create<PictureStore>((set) => ({
+export const usePictureStore = create<IPictureStore>((set) => ({
   pictures: [],
   selectedIndex: 0,
   checkedIndexSet: new Set(),
-  addPictures: (newPictures) =>
+  addPictures: (fileList) =>
     set((state) => ({
-      selectedIndex: state.pictures.length + newPictures.length - 1,
-      pictures: state.pictures.concat(setPreview(newPictures)),
+      selectedIndex: state.pictures.length + fileList.length - 1,
+      pictures: state.pictures.concat(
+        Array.from(fileList).map((newPicture) => new Picture(newPicture))
+      ),
     })),
   deletePicture: (targetIndex) =>
     set((state) => ({

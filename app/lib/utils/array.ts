@@ -1,11 +1,11 @@
-import { Picture } from "@/app/lib/types/picture";
+import { IPicture } from "@/app/lib/types/picture";
 
-export function setPreview(files: FileList) {
-  return Array.from(files).map((file) =>
+export function setPreview(fileList: FileList) {
+  return Array.from(fileList).map((file) =>
     Object.assign(file, { preview: URL.createObjectURL(file) })
   );
 }
 
-export function removePreview(files: Picture[]) {
-  files.map((picture) => URL.revokeObjectURL(picture.preview));
+export function removePreview(pictures: IPicture[]) {
+  pictures.map((picture) => URL.revokeObjectURL(picture.preview));
 }
