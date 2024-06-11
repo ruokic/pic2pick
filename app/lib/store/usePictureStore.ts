@@ -1,18 +1,22 @@
-import { create } from "zustand";
+import { create, SetState } from "zustand";
 import { Picture } from "@/app/lib/classes";
 import { IPicture } from "@/app/lib/types";
 
-interface IPictureStore {
+interface IPictureState {
   pictures: IPicture[];
   selectedIndex: number;
   checkedIndexSet: Set<number>;
+}
 
+interface IPictureActions {
   addPictures: (fileList: FileList) => void;
 
   deletePicture: (targetIndex: number) => void;
   deleteCheckedPictures: () => void;
   deleteAllPictures: () => void;
+}
 
+interface IIndexActions {
   changeSelectedIndex: (targetIndex: number) => void;
 
   checkIndex: (targetIndex: number) => void;
@@ -22,7 +26,9 @@ interface IPictureStore {
   uncheckAllIndex: () => void;
 }
 
-const pictureActions = (set) => ({
+interface IPictureStore extends IPictureState, IPictureActions, IIndexActions {}
+
+const pictureActions = (set: SetState<IPictureState>): IPictureActions => ({
   addPictures: (fileList) =>
     set((state) => ({
       selectedIndex: state.pictures.length + fileList.length - 1,
@@ -60,7 +66,7 @@ const pictureActions = (set) => ({
   deleteAllPictures: () => set(() => ({ selectedIndex: 0, pictures: [] })),
 });
 
-const indexActions = (set) => ({
+const indexActions = (set: SetState<IPictureState>): IIndexActions => ({
   changeSelectedIndex: (targetIndex) =>
     set((state) => ({ selectedIndex: targetIndex })),
   checkIndex: (targetIndex) =>
@@ -72,7 +78,7 @@ const indexActions = (set) => ({
   checkAllIndex: () =>
     set((state) => ({
       checkedIndexSet: new Set(
-        Array.from({ length: state.picture.length }, (_, index) => index)
+        Array.from({ length: state.pictures.length }, (_, index) => index)
       ),
     })),
   uncheckIndex: (targetIndex) =>

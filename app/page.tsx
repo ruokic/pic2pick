@@ -5,7 +5,6 @@ import PictureList from "@/app/ui/picture/List";
 import PictureDetail from "@/app/ui/picture/Detail";
 import { useHeightResizer, useWidthResizer } from "@/app/lib/hooks";
 import { usePictureStore } from "@/app/lib/store";
-import { removePreview } from "@/app/lib/utils";
 
 export default function Home() {
   const { containerRef, handleMouseDown } = useWidthResizer();
