@@ -1,36 +1,34 @@
-import { IPicture } from "@/app/lib/types";
+import { Picture } from "@/app/lib/classes";
 import { ListItem } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store";
 
 interface PictureListItemProps {
-  picture: IPicture;
-  index: number;
+  picture: Picture;
 }
 
 export default function PictureListItem({
-  picture,
-  index,
+  picture: { key, name },
 }: PictureListItemProps) {
   const {
-    selectedIndex,
-    changeSelectedIndex,
-    checkedIndexSet,
-    checkIndex,
-    uncheckIndex,
+    selectedKey,
+    changeSelectedKey,
+    checkedKeySet,
+    checkKey,
+    uncheckKey,
   } = usePictureStore();
 
-  const handleToggleCheckIndex = () =>
-    checkedIndexSet.has(index) ? uncheckIndex(index) : checkIndex(index);
+  const handleToggleCheckKey = () =>
+    checkedKeySet.has(key) ? uncheckKey(key) : checkKey(key);
 
   return (
-    <ListItem selected={index === selectedIndex}>
+    <ListItem selected={key === selectedKey}>
       <input
         type="checkbox"
-        checked={checkedIndexSet.has(index)}
-        onChange={handleToggleCheckIndex}
+        checked={checkedKeySet.has(key)}
+        onChange={handleToggleCheckKey}
       />
-      <button className="truncate" onClick={() => changeSelectedIndex(index)}>
-        {picture.name}
+      <button className="truncate" onClick={() => changeSelectedKey(key)}>
+        {name}
       </button>
     </ListItem>
   );

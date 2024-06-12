@@ -4,8 +4,8 @@ import { Button, Container, Text } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store";
 
 export default function PictureInfo() {
-  const { pictures, selectedIndex, deletePicture } = usePictureStore();
-  const picture = pictures[selectedIndex];
+  const { pictures, selectedKey, deletePicture } = usePictureStore();
+  const picture = pictures.find(({ key }) => key === selectedKey);
 
   return (
     <Container style="w-full min-h-60 h-1/3">
@@ -37,7 +37,7 @@ export default function PictureInfo() {
             <Button
               warning
               label="삭제"
-              onClick={() => deletePicture(selectedIndex)}
+              onClick={() => deletePicture(selectedKey)}
             />
           </div>
         </>

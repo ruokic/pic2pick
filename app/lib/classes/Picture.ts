@@ -1,7 +1,6 @@
-import { IPicture } from "@/app/lib/types";
-
-export class Picture extends File implements IPicture {
+export class Picture extends File {
   preview: string;
+  key: symbol;
 
   constructor(file: File) {
     super([file], file.name, {
@@ -9,6 +8,7 @@ export class Picture extends File implements IPicture {
       lastModified: file.lastModified,
     });
     this.preview = URL.createObjectURL(file);
+    this.key = Symbol("key");
   }
 
   revokePreview() {
