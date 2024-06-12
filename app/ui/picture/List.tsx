@@ -21,7 +21,7 @@ export default function PictureList() {
 
   const handleToggleCheckAllIndex = () =>
     checkedIndexSet?.size < pictures?.length
-      ? checkAllIndex()
+      ? checkAllIndex(pictures?.length)
       : uncheckAllIndex();
 
   return (

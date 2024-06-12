@@ -1,11 +1,11 @@
 import { create, SetState } from "zustand";
-import { Picture } from "@/app/lib/classes";
+import { ImmutableSet, Picture } from "@/app/lib/classes";
 import { IPicture } from "@/app/lib/types";
 
 interface IPictureState {
   pictures: IPicture[];
   selectedIndex: number;
-  checkedIndexSet: Set<number>;
+  checkedIndexSet: ImmutableSet<number>;
 }
 
 interface IPictureActions {
@@ -20,7 +20,7 @@ interface IIndexActions {
   changeSelectedIndex: (targetIndex: number) => void;
 
   checkIndex: (targetIndex: number) => void;
-  checkAllIndex: () => void;
+  checkAllIndex: (length: number) => void;
 
   uncheckIndex: (targetIndex: number) => void;
   uncheckAllIndex: () => void;
@@ -61,39 +61,39 @@ const pictureActions = (set: SetState<IPictureState>): IPictureActions => ({
       pictures: state.pictures.filter(
         (_, index) => !state.checkedIndexSet.has(index)
       ),
-      checkedIndexSet: new Set(),
+      checkedIndexSet: state.checkedIndexSet.toCleared(),
     })),
-  deleteAllPictures: () => set(() => ({ selectedIndex: 0, pictures: [] })),
+  deleteAllPictures: () =>
+    set((state) => ({
+      selectedIndex: 0,
+      pictures: [],
+      checkedIndexSet: state.checkedIndexSet.toCleared(),
+    })),
 });
 
 const indexActions = (set: SetState<IPictureState>): IIndexActions => ({
   changeSelectedIndex: (targetIndex) =>
     set((state) => ({ selectedIndex: targetIndex })),
   checkIndex: (targetIndex) =>
-    set((state) => {
-      const newSet = new Set(state.checkedIndexSet);
-      newSet.add(targetIndex);
-      return { checkedIndexSet: newSet };
-    }),
-  checkAllIndex: () =>
     set((state) => ({
-      checkedIndexSet: new Set(
-        Array.from({ length: state.pictures.length }, (_, index) => index)
-      ),
+      checkedIndexSet: state.checkedIndexSet.toAdded(targetIndex),
+    })),
+  checkAllIndex: (length) =>
+    set((state) => ({
+      checkedIndexSet: state.checkedIndexSet.fillWithContinuousNumber(length),
     })),
   uncheckIndex: (targetIndex) =>
-    set((state) => {
-      const newSet = new Set(state.checkedIndexSet);
-      newSet.delete(targetIndex);
-      return { checkedIndexSet: newSet };
-    }),
-  uncheckAllIndex: () => set((state) => ({ checkedIndexSet: new Set() })),
+    set((state) => ({
+      checkedIndexSet: state.checkedIndexSet.toDeleted(targetIndex),
+    })),
+  uncheckAllIndex: () =>
+    set((state) => ({ checkedIndexSet: state.checkedIndexSet.toCleared() })),
 });
 
 export const usePictureStore = create<IPictureStore>((set) => ({
   pictures: [],
   selectedIndex: 0,
-  checkedIndexSet: new Set(),
+  checkedIndexSet: new ImmutableSet(),
   ...pictureActions(set),
   ...indexActions(set),
 }));
