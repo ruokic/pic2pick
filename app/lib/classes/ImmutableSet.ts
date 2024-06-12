@@ -19,7 +19,7 @@ export class ImmutableSet<T> extends Set<T> {
     return new ImmutableSet();
   }
 
-  fillWithContinuousNumber(length: number): ImmutableSet<number> {
-    return new ImmutableSet(Array.from({ length }, (_, index) => index));
+  toFilled(items: Array<T>): ImmutableSet<T> {
+    return new ImmutableSet(items);
   }
 }

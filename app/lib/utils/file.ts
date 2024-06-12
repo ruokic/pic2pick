@@ -15,3 +15,7 @@ export function downloadFile(file: Picture) {
   };
   reader.readAsArrayBuffer(file);
 }
+
+export function convertFileListToPictures(fileList: FileList) {
+  return Array.from(fileList).map((file) => new Picture(file));
+}

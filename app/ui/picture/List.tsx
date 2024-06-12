@@ -8,21 +8,21 @@ export default function PictureList() {
   const {
     pictures,
     deleteCheckedPictures,
-    checkedIndexSet,
-    checkAllIndex,
-    uncheckAllIndex,
+    checkedKeySet,
+    checkAllKey,
+    uncheckAllKey,
   } = usePictureStore();
 
   const handleClickDownload = () => {
-    pictures.forEach((picture, index) => {
-      if (checkedIndexSet.has(index)) downloadFile(picture);
+    pictures.forEach((picture) => {
+      if (checkedKeySet.has(picture.key)) downloadFile(picture);
     });
   };
 
-  const handleToggleCheckAllIndex = () =>
-    checkedIndexSet?.size < pictures?.length
-      ? checkAllIndex(pictures?.length)
-      : uncheckAllIndex();
+  const handleToggleCheckAllKey = () =>
+    checkedKeySet?.size < pictures?.length
+      ? checkAllKey(pictures)
+      : uncheckAllKey();
 
   return (
     <Container style="min-w-80 h-full">
@@ -38,8 +38,8 @@ export default function PictureList() {
             <input
               id="checkall"
               type="checkbox"
-              checked={pictures?.length === checkedIndexSet?.size}
-              onChange={handleToggleCheckAllIndex}
+              checked={pictures?.length === checkedKeySet?.size}
+              onChange={handleToggleCheckAllKey}
             />
             <label htmlFor="checkall">
               <Text>전체 선택</Text>
@@ -47,12 +47,8 @@ export default function PictureList() {
           </div>
 
           <List>
-            {pictures.map((picture, index) => (
-              <PictureListItem
-                key={picture.preview}
-                picture={picture}
-                index={index}
-              />
+            {pictures.map((picture) => (
+              <PictureListItem key={picture.preview} picture={picture} />
             ))}
           </List>
           <div className="flex flex-col gap-2 justify-self-end">
@@ -60,13 +56,13 @@ export default function PictureList() {
               label="선택 다운로드"
               primary
               onClick={handleClickDownload}
-              disabled={checkedIndexSet.size === 0}
+              disabled={checkedKeySet.size === 0}
             />
             <Button
               label="선택 삭제"
               warning
               onClick={deleteCheckedPictures}
-              disabled={checkedIndexSet.size === 0}
+              disabled={checkedKeySet.size === 0}
             />
           </div>
         </>

@@ -5,9 +5,9 @@ import PictureEnlargedPreview from "@/app/ui/picture/EnlargedPreview";
 import { usePictureStore } from "@/app/lib/store";
 
 export default function PicturePreview() {
-  const { pictures, selectedIndex } = usePictureStore();
+  const { pictures, selectedKey } = usePictureStore();
   const [showModal, setShowModal] = useState(false);
-  const picture = pictures[selectedIndex];
+  const picture = pictures.find(({ key }) => key === selectedKey);
 
   return (
     <Container style="relative w-full min-h-80 h-2/3 bg-gray-200">

@@ -1,5 +1,6 @@
 export class Picture extends File {
   preview: string;
+  key: symbol;
 
   constructor(file: File) {
     super([file], file.name, {
@@ -7,6 +8,7 @@ export class Picture extends File {
       lastModified: file.lastModified,
     });
     this.preview = URL.createObjectURL(file);
+    this.key = Symbol("key");
   }
 
   revokePreview() {
