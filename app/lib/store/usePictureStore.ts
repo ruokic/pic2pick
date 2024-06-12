@@ -1,9 +1,8 @@
 import { create, SetState } from "zustand";
 import { ImmutableSet, Picture } from "@/app/lib/classes";
-import { IPicture } from "@/app/lib/types";
 
 interface IPictureState {
-  pictures: IPicture[];
+  pictures: Picture[];
   selectedIndex: number;
   checkedIndexSet: ImmutableSet<number>;
 }
