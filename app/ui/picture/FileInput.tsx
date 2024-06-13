@@ -1,6 +1,6 @@
 import { usePictureStore } from "@/app/lib/store";
 
-export default function PictureUploader() {
+export default function PictureFileInput() {
   const { addPictures } = usePictureStore();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

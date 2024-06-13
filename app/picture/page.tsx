@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { Divider } from "@/app/ui/components";
-import PictureList from "@/app/ui/picture/List";
+import PictureSidebar from "@/app/ui/picture/Sidebar";
 import PictureDetail from "@/app/ui/picture/Detail";
 import { useHeightResizer, useWidthResizer } from "@/app/lib/hooks";
 import { usePictureStore } from "@/app/lib/store";
@@ -18,7 +18,7 @@ export default function Picture() {
 
   return (
     <main ref={containerRef} className="flex h-[calc(100vh-66px)]">
-      <PictureList />
+      <PictureSidebar />
       <Divider resizable onMouseDown={handleMouseDown} />
       <PictureDetail />
     </main>
