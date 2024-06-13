@@ -1,4 +1,4 @@
-import { Picture } from "@/app/lib/types/picture";
+import { Picture } from "@/app/lib/classes";
 
 export function downloadFile(file: Picture) {
   const reader = new FileReader();
@@ -14,4 +14,8 @@ export function downloadFile(file: Picture) {
     document.body.removeChild(a);
   };
   reader.readAsArrayBuffer(file);
+}
+
+export function convertFileListToPictures(fileList: FileList) {
+  return Array.from(fileList).map((file) => new Picture(file));
 }

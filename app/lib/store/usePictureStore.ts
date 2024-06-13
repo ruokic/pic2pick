@@ -1,84 +1,81 @@
-import { create } from "zustand";
-import { Picture } from "@/app/lib/types/picture";
-import { setPreview } from "@/app/lib/utils/array";
+import { create, SetState } from "zustand";
+import { ImmutableSet, Picture } from "@/app/lib/classes";
+import { convertFileListToPictures } from "@/app/lib/utils";
 
-interface PictureStore {
+interface IPictureState {
   pictures: Picture[];
-  selectedIndex: number;
-  checkedIndexSet: Set<number>;
-
-  addPictures: (newPictures: FileList) => void;
-
-  deletePicture: (index: number) => void;
-  deleteCheckedPictures: () => void;
-  deleteAllPictures: () => void;
-
-  changeSelectedIndex: (index: number) => void;
-
-  checkIndex: (index: number) => void;
-  checkAllIndex: () => void;
-
-  uncheckIndex: (index: number) => void;
-  uncheckAllIndex: () => void;
+  selectedKey: symbol;
+  checkedKeySet: ImmutableSet<symbol>;
 }
 
-export const usePictureStore = create<PictureStore>((set) => ({
-  pictures: [],
-  selectedIndex: 0,
-  checkedIndexSet: new Set(),
-  addPictures: (newPictures) =>
+interface IPictureActions {
+  addPictures: (fileList: FileList) => void;
+
+  deletePicture: (targetKey: symbol) => void;
+  deleteCheckedPictures: () => void;
+}
+
+interface IKeyActions {
+  changeSelectedKey: (targetKey: symbol) => void;
+
+  checkKey: (targetKey: symbol) => void;
+  checkAllKey: (pictures: Picture[]) => void;
+
+  uncheckKey: (targetKey: symbol) => void;
+  uncheckAllKey: () => void;
+}
+
+interface IPictureStore extends IPictureState, IPictureActions, IKeyActions {}
+
+const pictureActions = (set: SetState<IPictureState>): IPictureActions => ({
+  addPictures: (fileList) =>
     set((state) => ({
-      selectedIndex: state.pictures.length + newPictures.length - 1,
-      pictures: state.pictures.concat(setPreview(newPictures)),
+      pictures: state.pictures.concat(convertFileListToPictures(fileList)),
     })),
-  deletePicture: (targetIndex) =>
+  deletePicture: (targetKey) =>
     set((state) => ({
-      selectedIndex: Math.max(
-        targetIndex < state.selectedIndex
-          ? state.selectedIndex - 1
-          : Math.min(state.selectedIndex, state.pictures.length - 2),
-        0
-      ),
-      pictures: state.pictures.filter((_, index) => targetIndex !== index),
+      pictures: state.pictures.filter((picture) => {
+        if (targetKey !== picture.key) return true;
+        picture.revokePreview();
+        return false;
+      }),
     })),
   deleteCheckedPictures: () =>
     set((state) => ({
-      selectedIndex:
-        state.selectedIndex -
-        state.pictures.reduce(
-          (acc, _, index) =>
-            acc +
-            (state.checkedIndexSet.has(index) && state.selectedIndex >= index
-              ? 1
-              : 0),
-          0
-        ),
-      pictures: state.pictures.filter(
-        (_, index) => !state.checkedIndexSet.has(index)
-      ),
-      checkedIndexSet: new Set(),
+      pictures: state.pictures.filter((picture) => {
+        if (!state.checkedKeySet.has(picture.key)) return true;
+        picture.revokePreview();
+        return false;
+      }),
+      checkedKeySet: state.checkedKeySet.toCleared(),
     })),
-  deleteAllPictures: () => set(() => ({ selectedIndex: 0, pictures: [] })),
-  changeSelectedIndex: (index) => set((state) => ({ selectedIndex: index })),
-  checkIndex: (index) =>
-    set((state) => {
-      const newSet = new Set(state.checkedIndexSet);
-      newSet.add(index);
-      return { checkedIndexSet: newSet };
-    }),
-  checkAllIndex: () =>
+});
+
+const keyActions = (set: SetState<IPictureState>): IKeyActions => ({
+  changeSelectedKey: (targetKey) =>
+    set((state) => ({ selectedKey: targetKey })),
+  checkKey: (targetKey) =>
     set((state) => ({
-      checkedIndexSet: new Set(
-        Array(state.pictures.length)
-          .fill(null)
-          .map((_, i) => i)
+      checkedKeySet: state.checkedKeySet.toAdded(targetKey),
+    })),
+  checkAllKey: (pictures) =>
+    set((state) => ({
+      checkedKeySet: state.checkedKeySet.toFilled(
+        pictures.map(({ key }) => key)
       ),
     })),
-  uncheckIndex: (index) =>
-    set((state) => {
-      const newSet = new Set(state.checkedIndexSet);
-      newSet.delete(index);
-      return { checkedIndexSet: newSet };
-    }),
-  uncheckAllIndex: () => set((state) => ({ checkedIndexSet: new Set() })),
+  uncheckKey: (targetKey) =>
+    set((state) => ({
+      checkedKeySet: state.checkedKeySet.toDeleted(targetKey),
+    })),
+  uncheckAllKey: () =>
+    set((state) => ({ checkedKeySet: state.checkedKeySet.toCleared() })),
+});
+
+export const usePictureStore = create<IPictureStore>((set) => ({
+  pictures: [],
+  selectedKey: Symbol(),
+  checkedKeySet: new ImmutableSet(),
+  ...pictureActions(set),
+  ...keyActions(set),
 }));
