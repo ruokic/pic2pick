@@ -1,4 +1,5 @@
 import { createPortal } from "react-dom";
+import classNames from "classnames";
 
 interface ModalProps {
   showModal: boolean;
@@ -11,7 +12,7 @@ export function Modal({
   showModal,
   setShowModal,
   children,
-  style = "",
+  style,
 }: ModalProps) {
   if (!showModal) return null;
   return createPortal(
@@ -20,7 +21,7 @@ export function Modal({
       onClick={(e: React.MouseEvent<HTMLDivElement>) => setShowModal(false)}
     >
       <div
-        className={["p-4 bg-white flex flex-col items-center", style].join(" ")}
+        className={classNames("p-4 bg-white flex flex-col items-center", style)}
         onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
       >
         {children}
