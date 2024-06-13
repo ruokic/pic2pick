@@ -1,7 +1,13 @@
 import { usePictureStore } from "@/app/lib/store";
 
-export default function PictureUploader() {
+export default function PictureFileInput() {
   const { addPictures } = usePictureStore();
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target?.files) return;
+    addPictures(e.target.files);
+    e.target.value = "";
+  };
 
   return (
     <>
@@ -14,7 +20,7 @@ export default function PictureUploader() {
         accept="image/*"
         multiple
         className="hidden"
-        onChange={(e) => e.target?.files && addPictures(e.target.files)}
+        onChange={handleInputChange}
       />
     </>
   );

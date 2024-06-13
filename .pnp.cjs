@@ -39,6 +39,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.12.12"],\
           ["@types/react", "npm:18.3.3"],\
           ["@types/react-dom", "npm:18.3.0"],\
+          ["classnames", "npm:2.5.1"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:14.2.3"],\
           ["eslint-plugin-storybook", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:0.8.0"],\
@@ -8230,6 +8231,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["classnames", [\
+      ["npm:2.5.1", {\
+        "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/classnames-npm-2.5.1-c7273f3423-10c0.zip/node_modules/classnames/",\
+        "packageDependencies": [\
+          ["classnames", "npm:2.5.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["clean-css", [\
       ["npm:5.3.3", {\
         "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/clean-css-npm-5.3.3-d2bb553a94-10c0.zip/node_modules/clean-css/",\
@@ -13137,6 +13147,7 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.12.12"],\
           ["@types/react", "npm:18.3.3"],\
           ["@types/react-dom", "npm:18.3.0"],\
+          ["classnames", "npm:2.5.1"],\
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:14.2.3"],\
           ["eslint-plugin-storybook", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:0.8.0"],\

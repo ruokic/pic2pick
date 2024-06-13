@@ -1,3 +1,5 @@
+import classNames from "classnames";
+
 interface DividerProps {
   type?: "vertical" | "horizontal";
   resizable?: boolean;
@@ -9,15 +11,16 @@ export function Divider({
   resizable = false,
   onMouseDown,
 }: DividerProps) {
-  const defaultStyle = "bg-gray-200";
-  const styleByType = type === "vertical" ? "w-1" : "h-1";
-  const styleByResizable = resizable
-    ? "hover-bg-blue-300 " +
-      (type === "vertical" ? "cursor-col-resize" : "cursor-row-resize")
-    : "";
   return (
     <div
-      className={[defaultStyle, styleByType, styleByResizable].join(" ")}
+      className={classNames("bg-gray-200", {
+        "w-1": type === "vertical",
+        "h-1": type === "horizontal",
+
+        "hover-bg-blue-300": resizable,
+        "cursor-col-resize": resizable && type === "vertical",
+        "cursor-row-resize": resizable && type === "horizontal",
+      })}
       onMouseDown={onMouseDown}
     />
   );
