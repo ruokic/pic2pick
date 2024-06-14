@@ -1,7 +1,7 @@
 import PictureListItem from "@/app/ui/picture/ListItem";
 import { Button, List, Text } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store";
-import { downloadFile } from "@/app/lib/utils";
+import { downloadZipFile } from "@/app/lib/utils";
 
 export default function PictureList() {
   const {
@@ -13,9 +13,10 @@ export default function PictureList() {
   } = usePictureStore();
 
   const handleClickDownload = () => {
-    pictures.forEach((picture) => {
-      if (checkedKeySet.has(picture.key)) downloadFile(picture);
-    });
+    downloadZipFile(
+      pictures.filter((picture) => checkedKeySet.has(picture.key)),
+      "files"
+    );
   };
 
   const handleToggleCheckAllKey = () =>
