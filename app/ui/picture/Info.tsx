@@ -1,20 +1,21 @@
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { setDateString, setByteString } from "@/app/lib/utils";
-import { downloadFile } from "@/app/lib/utils";
 import { Button, Container, Text } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store";
 
 export default function PictureInfo() {
   const [isEditMode, setIsEditMode] = useState(false);
-  const nameInputRef = useRef();
+  const nameInputRef = useRef<HTMLInputElement>(null);
   const { pictures, selectedKey, deletePicture, updatePicture } =
     usePictureStore();
   const picture = pictures.find(({ key }) => key === selectedKey);
 
   const handleEditClick = () => {
     if (isEditMode) {
-      updatePicture(picture.editName(nameInputRef.current.value));
+      const newName = nameInputRef.current?.value;
+      if (!newName) return;
+      updatePicture(picture!.editName(newName));
       setIsEditMode(false);
       return;
     }

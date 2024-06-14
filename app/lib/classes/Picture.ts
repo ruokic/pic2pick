@@ -18,8 +18,8 @@ export class Picture extends File {
   editName(newName: string): Picture {
     const newFile = new File([this], newName, {
       type: this.type,
-      lastModified: new Date(),
-    });
+      lastModified: Number(new Date()),
+    }) as Picture;
     Object.setPrototypeOf(newFile, Picture.prototype);
     newFile.preview = this.preview;
     newFile.key = this.key;
