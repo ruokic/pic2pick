@@ -9,38 +9,34 @@ export default function PictureInfo() {
 
   return (
     <Container style="w-full min-h-60 h-1/3">
-      <Text size="lg" weight="bold">
-        사진 정보
-      </Text>
       {picture ? (
         <>
-          <div className="grid grid-cols-2 w-full gap-2">
-            <div className="grid grid-cols-2">
-              <Text>이름</Text>
-              <Text>{picture.name}</Text>
-              <Text>수정일자</Text>
-              <Text>{setDateString(picture.lastModified)}</Text>
-            </div>
-            <div className="grid grid-cols-2">
-              <Text>사진 크기</Text>
-              <Text>{setByteString(picture.size)}</Text>
-              <Text>사진 타입</Text>
-              <Text>{picture.type}</Text>
+          <div className="flex justify-between w-full">
+            <Text size="lg" weight="bold">
+              {picture.name}
+            </Text>
+            <div className="flex gap-2">
+              <Link
+                href={picture.preview}
+                target="_blank"
+                download={picture.name}
+              >
+                <Button primary label="다운로드" />
+              </Link>
+              <Button
+                warning
+                label="삭제"
+                onClick={() => deletePicture(selectedKey)}
+              />
             </div>
           </div>
           <div className="grid grid-cols-2 w-full gap-2">
-            <Link
-              href={picture.preview}
-              target="_blank"
-              download={picture.name}
-            >
-              <Button primary label="다운로드" />
-            </Link>
-            <Button
-              warning
-              label="삭제"
-              onClick={() => deletePicture(selectedKey)}
-            />
+            <Text>사진 크기</Text>
+            <Text>{setByteString(picture.size)}</Text>
+            <Text>사진 타입</Text>
+            <Text>{picture.type}</Text>
+            <Text>수정 일자</Text>
+            <Text>{setDateString(picture.lastModified)}</Text>
           </div>
         </>
       ) : (

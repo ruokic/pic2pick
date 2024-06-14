@@ -44,7 +44,7 @@ export default function PictureList() {
       </List>
       <div className="flex flex-col gap-2 justify-self-end">
         <Button
-          label="선택 다운로드"
+          label="압축하여 다운로드"
           primary
           onClick={handleClickDownload}
           disabled={checkedKeySet.size === 0}
