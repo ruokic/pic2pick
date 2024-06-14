@@ -13,6 +13,8 @@ interface IPictureActions {
 
   deletePicture: (targetKey: symbol) => void;
   deleteCheckedPictures: () => void;
+
+  updatePicture: (targetPicture: Picture) => void;
 }
 
 interface IKeyActions {
@@ -39,6 +41,7 @@ const pictureActions = (set: SetState<IPictureState>): IPictureActions => ({
         picture.revokePreview();
         return false;
       }),
+      checkedKeySet: state.checkedKeySet.toDeleted(targetKey),
     })),
   deleteCheckedPictures: () =>
     set((state) => ({
@@ -48,6 +51,12 @@ const pictureActions = (set: SetState<IPictureState>): IPictureActions => ({
         return false;
       }),
       checkedKeySet: state.checkedKeySet.toCleared(),
+    })),
+  updatePicture: (targetPicture) =>
+    set((state) => ({
+      pictures: state.pictures.map((picture) =>
+        picture.key === targetPicture.key ? targetPicture : picture
+      ),
     })),
 });
 
@@ -60,9 +69,7 @@ const keyActions = (set: SetState<IPictureState>): IKeyActions => ({
     })),
   checkAllKey: (pictures) =>
     set((state) => ({
-      checkedKeySet: state.checkedKeySet.toFilled(
-        pictures.map(({ key }) => key)
-      ),
+      checkedKeySet: new ImmutableSet(pictures.map(({ key }) => key)),
     })),
   uncheckKey: (targetKey) =>
     set((state) => ({

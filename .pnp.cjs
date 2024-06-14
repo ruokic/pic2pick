@@ -36,6 +36,7 @@ const RAW_RUNTIME_STATE =
           ["@storybook/nextjs", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:8.1.4"],\
           ["@storybook/react", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:8.1.4"],\
           ["@storybook/test", "npm:8.1.4"],\
+          ["@types/file-saver", "npm:2.0.7"],\
           ["@types/node", "npm:20.12.12"],\
           ["@types/react", "npm:18.3.3"],\
           ["@types/react-dom", "npm:18.3.0"],\
@@ -43,6 +44,8 @@ const RAW_RUNTIME_STATE =
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:14.2.3"],\
           ["eslint-plugin-storybook", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:0.8.0"],\
+          ["file-saver", "npm:2.0.5"],\
+          ["jszip", "npm:3.10.1"],\
           ["next", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:14.2.3"],\
           ["postcss", "npm:8.4.38"],\
           ["react", "npm:18.3.1"],\
@@ -6216,6 +6219,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/file-saver", [\
+      ["npm:2.0.7", {\
+        "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/@types-file-saver-npm-2.0.7-39f33a4b39-10c0.zip/node_modules/@types/file-saver/",\
+        "packageDependencies": [\
+          ["@types/file-saver", "npm:2.0.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/hast", [\
       ["npm:3.0.4", {\
         "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/@types-hast-npm-3.0.4-640776a343-10c0.zip/node_modules/@types/hast/",\
@@ -10450,6 +10462,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["file-saver", [\
+      ["npm:2.0.5", {\
+        "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/file-saver-npm-2.0.5-2c3bc40d53-10c0.zip/node_modules/file-saver/",\
+        "packageDependencies": [\
+          ["file-saver", "npm:2.0.5"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["file-system-cache", [\
       ["npm:2.3.0", {\
         "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/file-system-cache-npm-2.3.0-9edc562b29-10c0.zip/node_modules/file-system-cache/",\
@@ -11482,6 +11503,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["immediate", [\
+      ["npm:3.0.6", {\
+        "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/immediate-npm-3.0.6-c27588a2d3-10c0.zip/node_modules/immediate/",\
+        "packageDependencies": [\
+          ["immediate", "npm:3.0.6"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["import-fresh", [\
       ["npm:3.3.0", {\
         "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/import-fresh-npm-3.3.0-3e34265ca9-10c0.zip/node_modules/import-fresh/",\
@@ -12322,6 +12352,19 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["jszip", [\
+      ["npm:3.10.1", {\
+        "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/jszip-npm-3.10.1-2862546cfb-10c0.zip/node_modules/jszip/",\
+        "packageDependencies": [\
+          ["jszip", "npm:3.10.1"],\
+          ["lie", "npm:3.3.0"],\
+          ["pako", "npm:1.0.11"],\
+          ["readable-stream", "npm:2.3.8"],\
+          ["setimmediate", "npm:1.0.5"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["keyv", [\
       ["npm:4.5.4", {\
         "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/keyv-npm-4.5.4-4c8e2cf7f7-10c0.zip/node_modules/keyv/",\
@@ -12406,6 +12449,16 @@ const RAW_RUNTIME_STATE =
           ["levn", "npm:0.4.1"],\
           ["prelude-ls", "npm:1.2.1"],\
           ["type-check", "npm:0.4.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["lie", [\
+      ["npm:3.3.0", {\
+        "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/lie-npm-3.3.0-35ddd11a4d-10c0.zip/node_modules/lie/",\
+        "packageDependencies": [\
+          ["lie", "npm:3.3.0"],\
+          ["immediate", "npm:3.0.6"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -13144,6 +13197,7 @@ const RAW_RUNTIME_STATE =
           ["@storybook/nextjs", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:8.1.4"],\
           ["@storybook/react", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:8.1.4"],\
           ["@storybook/test", "npm:8.1.4"],\
+          ["@types/file-saver", "npm:2.0.7"],\
           ["@types/node", "npm:20.12.12"],\
           ["@types/react", "npm:18.3.3"],\
           ["@types/react-dom", "npm:18.3.0"],\
@@ -13151,6 +13205,8 @@ const RAW_RUNTIME_STATE =
           ["eslint", "npm:8.57.0"],\
           ["eslint-config-next", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:14.2.3"],\
           ["eslint-plugin-storybook", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:0.8.0"],\
+          ["file-saver", "npm:2.0.5"],\
+          ["jszip", "npm:3.10.1"],\
           ["next", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:14.2.3"],\
           ["postcss", "npm:8.4.38"],\
           ["react", "npm:18.3.1"],\
