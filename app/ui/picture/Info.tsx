@@ -2,7 +2,7 @@ import { setDateString, setByteString } from "@/app/lib/utils";
 import { downloadFile } from "@/app/lib/utils";
 import { Button, Container, Text } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store";
-
+import Link from "next/link";
 export default function PictureInfo() {
   const { pictures, selectedKey, deletePicture } = usePictureStore();
   const picture = pictures.find(({ key }) => key === selectedKey);
@@ -29,11 +29,13 @@ export default function PictureInfo() {
             </div>
           </div>
           <div className="grid grid-cols-2 w-full gap-2">
-            <Button
-              primary
-              label="다운로드"
-              onClick={() => downloadFile(picture)}
-            />
+            <Link
+              href={picture.preview}
+              target="_blank"
+              download={picture.name}
+            >
+              <Button primary label="다운로드" />
+            </Link>
             <Button
               warning
               label="삭제"

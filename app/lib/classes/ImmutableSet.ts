@@ -4,12 +4,14 @@ export class ImmutableSet<T> extends Set<T> {
   }
 
   toAdded(value: T): ImmutableSet<T> {
+    if (this.has(value)) return this;
     const newSet = new ImmutableSet(this);
     super.add.call(newSet, value);
     return newSet;
   }
 
   toDeleted(value: T): ImmutableSet<T> {
+    if (!this.has(value)) return this;
     const newSet = new ImmutableSet(this);
     super.delete.call(newSet, value);
     return newSet;
@@ -17,9 +19,5 @@ export class ImmutableSet<T> extends Set<T> {
 
   toCleared(): ImmutableSet<T> {
     return new ImmutableSet();
-  }
-
-  toFilled(items: Array<T>): ImmutableSet<T> {
-    return new ImmutableSet(items);
   }
 }

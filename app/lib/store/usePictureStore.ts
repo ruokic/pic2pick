@@ -39,6 +39,7 @@ const pictureActions = (set: SetState<IPictureState>): IPictureActions => ({
         picture.revokePreview();
         return false;
       }),
+      checkedKeySet: state.checkedKeySet.toDeleted(targetKey),
     })),
   deleteCheckedPictures: () =>
     set((state) => ({
@@ -60,9 +61,7 @@ const keyActions = (set: SetState<IPictureState>): IKeyActions => ({
     })),
   checkAllKey: (pictures) =>
     set((state) => ({
-      checkedKeySet: state.checkedKeySet.toFilled(
-        pictures.map(({ key }) => key)
-      ),
+      checkedKeySet: new ImmutableSet(pictures.map(({ key }) => key)),
     })),
   uncheckKey: (targetKey) =>
     set((state) => ({
