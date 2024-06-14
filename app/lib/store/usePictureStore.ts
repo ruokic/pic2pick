@@ -13,6 +13,8 @@ interface IPictureActions {
 
   deletePicture: (targetKey: symbol) => void;
   deleteCheckedPictures: () => void;
+
+  updatePicture: (targetPicture: Picture) => void;
 }
 
 interface IKeyActions {
@@ -49,6 +51,12 @@ const pictureActions = (set: SetState<IPictureState>): IPictureActions => ({
         return false;
       }),
       checkedKeySet: state.checkedKeySet.toCleared(),
+    })),
+  updatePicture: (targetPicture) =>
+    set((state) => ({
+      pictures: state.pictures.map((picture) =>
+        picture.key === targetPicture.key ? targetPicture : picture
+      ),
     })),
 });
 

@@ -4,7 +4,8 @@ import { Button, Container, Text } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store";
 import Link from "next/link";
 export default function PictureInfo() {
-  const { pictures, selectedKey, deletePicture } = usePictureStore();
+  const { pictures, selectedKey, deletePicture, updatePicture } =
+    usePictureStore();
   const picture = pictures.find(({ key }) => key === selectedKey);
 
   return (
