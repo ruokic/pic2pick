@@ -20,7 +20,9 @@ export class Picture extends File {
       type: this.type,
       lastModified: new Date(),
     });
-    (newFile.preview = this.preview), (newFile.key = this.key);
+    Object.setPrototypeOf(newFile, Picture.prototype);
+    newFile.preview = this.preview;
+    newFile.key = this.key;
     return newFile;
   }
 }
