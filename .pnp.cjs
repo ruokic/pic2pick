@@ -28,6 +28,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@chromatic-com/storybook", "npm:1.4.0"],\
+          ["@heroicons/react", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:2.1.3"],\
           ["@storybook/addon-essentials", "npm:8.1.4"],\
           ["@storybook/addon-interactions", "npm:8.1.4"],\
           ["@storybook/addon-links", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:8.1.4"],\
@@ -3130,6 +3131,28 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/@fal-works-esbuild-plugin-global-externals-npm-2.1.2-b50ef0c6e7-10c0.zip/node_modules/@fal-works/esbuild-plugin-global-externals/",\
         "packageDependencies": [\
           ["@fal-works/esbuild-plugin-global-externals", "npm:2.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@heroicons/react", [\
+      ["npm:2.1.3", {\
+        "packageLocation": "../../../C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/@heroicons-react-npm-2.1.3-0721c624b8-10c0.zip/node_modules/@heroicons/react/",\
+        "packageDependencies": [\
+          ["@heroicons/react", "npm:2.1.3"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:2.1.3", {\
+        "packageLocation": "./.yarn/__virtual__/@heroicons-react-virtual-0f137a6ce8/4/C:/Users/gusqo/AppData/Local/Yarn/Berry/cache/@heroicons-react-npm-2.1.3-0721c624b8-10c0.zip/node_modules/@heroicons/react/",\
+        "packageDependencies": [\
+          ["@heroicons/react", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:2.1.3"],\
+          ["@types/react", "npm:18.3.3"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -13189,6 +13212,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["nextjs", "workspace:."],\
           ["@chromatic-com/storybook", "npm:1.4.0"],\
+          ["@heroicons/react", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:2.1.3"],\
           ["@storybook/addon-essentials", "npm:8.1.4"],\
           ["@storybook/addon-interactions", "npm:8.1.4"],\
           ["@storybook/addon-links", "virtual:a0a1d86d37dad16ec9b6fa6783a3cfd93c087281e3d3f821332e71dfddaacca42fbc7ee14e4585a8c55e64cf5781a6c0a03b4d75a28b7eb7598942a159bb1c6c#npm:8.1.4"],\

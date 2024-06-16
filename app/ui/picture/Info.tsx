@@ -1,8 +1,13 @@
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { setDateString, setByteString } from "@/app/lib/utils";
-import { Button, Container, Text } from "@/app/ui/components";
+import { Button, Container, IconButton, Text } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store";
+import {
+  ArrowDownTrayIcon,
+  TrashIcon,
+  PencilSquareIcon,
+} from "@heroicons/react/24/solid";
 
 export default function PictureInfo() {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -30,20 +35,30 @@ export default function PictureInfo() {
             ref={nameInputRef}
             placeholder="사진 이름"
             defaultValue={picture.name}
+            autoFocus
           />
         ) : (
           <Text size="lg" weight="bold">
             {picture.name}
           </Text>
         )}
-        <div className="flex gap-2">
-          <Button primary label="수정" onClick={handleEditClick} />
-          <Link href={picture.preview} target="_blank" download={picture.name}>
-            <Button primary label="다운로드" />
+        <div className="flex gap-4">
+          <IconButton
+            icon={<PencilSquareIcon className="size-6 text-blue-500" />}
+            onClick={handleEditClick}
+          />
+          <Link
+            className="flex items-center"
+            href={picture.preview}
+            target="_blank"
+            download={picture.name}
+          >
+            <IconButton
+              icon={<ArrowDownTrayIcon className="size-6 text-black" />}
+            />
           </Link>
-          <Button
-            warning
-            label="삭제"
+          <IconButton
+            icon={<TrashIcon className="size-6 text-red-500" />}
             onClick={() => deletePicture(selectedKey)}
           />
         </div>
