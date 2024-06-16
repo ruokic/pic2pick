@@ -6,7 +6,7 @@ import { usePictureStore } from "@/app/lib/store";
 export default function PictureSidebar() {
   return (
     <Container style="min-w-80 h-full w-80">
-      <div className="flex justify-between">
+      <div className="flex justify-between pb-2">
         <Text size="lg" weight="bold">
           사진 목록
         </Text>

@@ -1,13 +1,16 @@
 import Link from "next/link";
 import { useState, useRef } from "react";
+import { motion } from "framer-motion";
 import { setDateString, setByteString } from "@/app/lib/utils";
-import { Button, Container, IconButton, Text } from "@/app/ui/components";
-import { usePictureStore } from "@/app/lib/store";
 import {
-  ArrowDownTrayIcon,
-  TrashIcon,
-  PencilSquareIcon,
-} from "@heroicons/react/24/solid";
+  Button,
+  Container,
+  IconButton,
+  InputText,
+  Text,
+} from "@/app/ui/components";
+import { usePictureStore } from "@/app/lib/store";
+import { ArrowDownTrayIcon, TrashIcon } from "@heroicons/react/24/solid";
 
 export default function PictureInfo() {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -16,37 +19,36 @@ export default function PictureInfo() {
     usePictureStore();
   const picture = pictures.find(({ key }) => key === selectedKey);
 
-  const handleEditClick = () => {
-    if (isEditMode) {
-      const newName = nameInputRef.current?.value;
-      if (!newName) return;
-      updatePicture(picture!.editName(newName));
-      setIsEditMode(false);
+  const handleToggleEditMode = () => {
+    if (!isEditMode) {
+      setIsEditMode(true);
       return;
     }
-    setIsEditMode(true);
+    const newName = nameInputRef.current?.value;
+    if (newName && newName !== picture?.name) {
+      updatePicture(picture!.editName(newName));
+    }
+    setIsEditMode(false);
   };
 
   return picture ? (
     <Container style="w-full min-h-60 h-1/3">
       <div className="flex justify-between items-center w-full">
-        {isEditMode ? (
-          <input
+        <div className="relative">
+          <InputText
             ref={nameInputRef}
-            placeholder="사진 이름"
+            placeholder={picture.name}
             defaultValue={picture.name}
-            autoFocus
+            onFocus={handleToggleEditMode}
+            onBlur={handleToggleEditMode}
           />
-        ) : (
-          <Text size="lg" weight="bold">
-            {picture.name}
-          </Text>
-        )}
+          <motion.div
+            className="absolute border-b border-black"
+            animate={{ width: isEditMode ? "100%" : "0%" }}
+            transition={{ duration: 0.3 }}
+          />
+        </div>
         <div className="flex gap-4">
-          <IconButton
-            icon={<PencilSquareIcon className="size-6 text-blue-500" />}
-            onClick={handleEditClick}
-          />
           <Link
             className="flex items-center"
             href={picture.preview}
