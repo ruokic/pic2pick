@@ -20,7 +20,7 @@ export const Button = ({
     <button
       type="button"
       className={classNames(
-        "font-sans rounded cursor-pointer leading-none disabled:opacity-50",
+        "rounded cursor-pointer leading-none disabled:opacity-50",
         {
           "text-xs py-2 px-4": size === "small",
           "text-sm py-2.5 px-5": size === "medium",

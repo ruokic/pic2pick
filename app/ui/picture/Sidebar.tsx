@@ -2,7 +2,6 @@ import PictureFileInput from "@/app/ui/picture/FileInput";
 import PictureList from "@/app/ui/picture/List";
 import { Container, Text } from "@/app/ui/components";
 import { usePictureStore } from "@/app/lib/store";
-import { downloadFile } from "@/app/lib/utils";
 
 export default function PictureSidebar() {
   return (

@@ -14,4 +14,15 @@ export class Picture extends File {
   revokePreview() {
     URL.revokeObjectURL(this.preview);
   }
+
+  editName(newName: string): Picture {
+    const newFile = new File([this], newName, {
+      type: this.type,
+      lastModified: Number(new Date()),
+    }) as Picture;
+    Object.setPrototypeOf(newFile, Picture.prototype);
+    newFile.preview = this.preview;
+    newFile.key = this.key;
+    return newFile;
+  }
 }

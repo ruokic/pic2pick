@@ -1,4 +1,5 @@
 import { usePictureStore } from "@/app/lib/store";
+import { PlusIcon } from "@heroicons/react/24/solid";
 
 export default function PictureFileInput() {
   const { addPictures } = usePictureStore();
@@ -12,7 +13,7 @@ export default function PictureFileInput() {
   return (
     <>
       <label htmlFor="file" className="cursor-pointer">
-        ➕
+        <PlusIcon className="size-6 text-black" />
       </label>
       <input
         id="file"

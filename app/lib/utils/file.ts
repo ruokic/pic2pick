@@ -1,19 +1,15 @@
+import JSZip from "jszip";
+import FileSaver from "file-saver";
 import { Picture } from "@/app/lib/classes";
 
-export function downloadFile(file: Picture) {
-  const reader = new FileReader();
-  reader.onload = function (e: ProgressEvent<FileReader>) {
-    const arrayBuffer = e.target!.result as ArrayBuffer;
-    const blob = new Blob([arrayBuffer], { type: file.type });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = file.name;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  };
-  reader.readAsArrayBuffer(file);
+export async function downloadZipFile(
+  files: File[],
+  folderName: string = "pictures"
+) {
+  const zip = new JSZip();
+  files.forEach((file) => zip.file(file.name, file));
+  const result = await zip.generateAsync({ type: "blob" });
+  return FileSaver(result, `${folderName}.zip`);
 }
 
 export function convertFileListToPictures(fileList: FileList) {

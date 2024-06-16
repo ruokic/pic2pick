@@ -7,7 +7,7 @@ export default function PictureDetail() {
   const { containerRef, handleMouseDown } = useHeightResizer();
 
   return (
-    <div ref={containerRef} className="flex flex-col w-2/3">
+    <div ref={containerRef} className="flex flex-col w-full">
       <PicturePreview />
       <Divider type="horizontal" resizable onMouseDown={handleMouseDown} />
       <PictureInfo />
