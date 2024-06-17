@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useState, useRef } from "react";
-import { motion } from "framer-motion";
 import { setDateString, setByteString } from "@/app/lib/utils";
 import {
   Button,
@@ -34,20 +33,14 @@ export default function PictureInfo() {
   return picture ? (
     <Container style="w-full min-h-60 h-1/3">
       <div className="flex justify-between items-center w-full">
-        <div className="relative">
-          <InputText
-            ref={nameInputRef}
-            placeholder={picture.name}
-            defaultValue={picture.name}
-            onFocus={handleToggleEditMode}
-            onBlur={handleToggleEditMode}
-          />
-          <motion.div
-            className="absolute border-b border-black"
-            animate={{ width: isEditMode ? "100%" : "0%" }}
-            transition={{ duration: 0.3 }}
-          />
-        </div>
+        <InputText
+          ref={nameInputRef}
+          isFocus={isEditMode}
+          placeholder={picture.name}
+          defaultValue={picture.name}
+          onFocus={handleToggleEditMode}
+          onBlur={handleToggleEditMode}
+        />
         <div className="flex gap-4">
           <Link
             className="flex items-center"
