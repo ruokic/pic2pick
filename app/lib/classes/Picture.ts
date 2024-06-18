@@ -21,8 +21,6 @@ export class Picture extends File {
       lastModified: Number(new Date()),
     }) as Picture;
     Object.setPrototypeOf(newFile, Picture.prototype);
-    newFile.preview = this.preview;
-    newFile.key = this.key;
-    return newFile;
+    return Object.assign(newFile, { preview: this.preview, key: this.key });
   }
 }

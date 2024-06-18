@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import Image from "next/image";
 import { Container, Modal } from "@/app/ui/components";
@@ -14,14 +15,12 @@ export default function PicturePreview() {
       {picture ? (
         <>
           <button
-            className="relative h-full"
+            className="relative h-full m-auto"
             onClick={() => setShowModal(true)}
           >
-            <Image
+            <img
               src={picture.preview}
-              className="object-contain"
-              fill
-              quality={100}
+              className="object-contain h-full"
               alt={picture.name}
             />
           </button>
