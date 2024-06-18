@@ -26,7 +26,7 @@ export default function PictureList() {
 
   return pictures.length > 0 ? (
     <>
-      <div className="flex px-2 gap-2">
+      <div className="flex px-4 gap-4">
         <input
           id="checkall"
           type="checkbox"

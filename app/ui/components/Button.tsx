@@ -9,13 +9,13 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-export const Button = ({
+export function Button({
   primary = false,
   warning = false,
   size = "medium",
   label,
   ...props
-}: ButtonProps) => {
+}: ButtonProps) {
   return (
     <button
       type="button"
@@ -36,4 +36,4 @@ export const Button = ({
       {label}
     </button>
   );
-};
+}
