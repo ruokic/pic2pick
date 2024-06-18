@@ -34,6 +34,7 @@ export default function PictureInfo() {
     <Container style="w-full min-h-60 h-1/3">
       <div className="flex justify-between items-center w-full">
         <InputText
+          key={picture.preview}
           ref={nameInputRef}
           isFocus={isEditMode}
           placeholder={picture.name}
