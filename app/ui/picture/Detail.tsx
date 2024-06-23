@@ -1,16 +1,14 @@
-import { Divider } from "@/app/ui/components";
+import { ResizableDivContainer } from "@/app/ui/components";
 import PictureInfo from "@/app/ui/picture/Info";
 import PicturePreview from "@/app/ui/picture/Preview";
-import { useHeightResizer } from "@/app/lib/hooks";
 
 export default function PictureDetail() {
-  const { containerRef, handleMouseDown } = useHeightResizer();
-
   return (
-    <div ref={containerRef} className="flex flex-col w-full">
-      <PicturePreview />
-      <Divider type="horizontal" resizable onMouseDown={handleMouseDown} />
-      <PictureInfo />
-    </div>
+    <ResizableDivContainer
+      style="w-full"
+      direction="horizontal"
+      top={<PicturePreview />}
+      bottom={<PictureInfo />}
+    />
   );
 }
