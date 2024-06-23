@@ -1,14 +1,15 @@
+"use client";
 import { useRef } from "react";
 
 interface IResizer {
-  direction: "vertical" | "horizontal";
+  direction?: "vertical" | "horizontal";
 }
 
 export function useResizer<IResizer>(direction = "vertical") {
-  const containerRef = useRef<HTMLElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (!(e.target instanceof HTMLElement)) return;
+    if (!(e.target instanceof HTMLDivElement)) return;
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp, { once: true });
   };
@@ -17,7 +18,7 @@ export function useResizer<IResizer>(direction = "vertical") {
     if (!containerRef.current) return;
     const [div1, resizer, div2] = Array.from(
       containerRef.current.childNodes
-    ) as HTMLElement[];
+    ) as HTMLDivElement[];
 
     const containerRect = containerRef.current.getBoundingClientRect();
     const div2Rect = div2.getBoundingClientRect();

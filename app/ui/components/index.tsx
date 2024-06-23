@@ -6,4 +6,5 @@ export * from "./InputText";
 export * from "./List";
 export * from "./ListItem";
 export * from "./Modal";
+export * from "./ResizableDivContainer";
 export * from "./Text";
