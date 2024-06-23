@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import { Divider } from "@/app/ui/components";
 import PictureSidebar from "@/app/ui/picture/Sidebar";
 import PictureDetail from "@/app/ui/picture/Detail";
-import { useHeightResizer, useWidthResizer } from "@/app/lib/hooks";
+import { useResizer } from "@/app/lib/hooks";
 import { usePictureStore } from "@/app/lib/store";
 
 export default function Picture() {
-  const { containerRef, handleMouseDown } = useWidthResizer();
+  const { containerRef, handleMouseDown } = useResizer();
   const { pictures } = usePictureStore();
 
   useEffect(() => {
